@@ -6,9 +6,11 @@
     list-style: none;
     box-sizing: border-box;
 }
+
 body {
     /* background-color: yellow; */
 }
+
 header {
     background: #fff;
     width: 100%;
@@ -18,15 +20,21 @@ header {
     justify-content: space-between;
     padding: 0 50px;
     border-bottom: solid 1px rgb(230, 232, 236);
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 }
+
 header .logo {
     font-size: 30px;
     font-weight: 500;
     /* text-transform: uppercase; */
 }
+
 header nav {
     display: flex;
 }
+
 header nav ul {
     display: flex;
 }
@@ -41,29 +49,45 @@ header nav ul li a {
     /* text-transform: uppercase; */
     transition: 0.2s;
 }
+
 header nav ul li a:hover,
 header nav ul li a.active {
     border-bottom-color: dodgerblue;
 }
+
 .hamburger {
     cursor: pointer;
     display: none;
 }
+
 .hamburger div {
     width: 30px;
     height: 3px;
     margin: 5px 0;
     background: #000;
 }
+
+main {
+    min-height: 82vh;
+    background-color: white;
+    padding: 10px;
+}
+
+footer {
+    padding: 10px;
+}
+
 @media only screen and (max-width: 900px) {
     header {
         padding: 0 30px;
     }
 }
+
 @media only screen and (max-width: 700px) {
     .hamburger {
         display: block;
     }
+
     header nav {
         position: absolute;
         width: 100%;
@@ -74,14 +98,17 @@ header nav ul li a.active {
         padding: 30px;
         transition: 0.3s;
         border-right: solid 1px black;
-        height: 92vh;
+        min-height: 92vh;
     }
-    header #nav_check:checked ~ nav {
+
+    header #nav_check:checked~nav {
         left: 0;
     }
+
     header nav ul {
         display: block;
     }
+
     header nav ul li a {
         margin: 5px 0;
     }
