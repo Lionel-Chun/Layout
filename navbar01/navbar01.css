@@ -52,7 +52,7 @@ header nav ul li a {
 
 header nav ul li a:hover,
 header nav ul li a.active {
-    border-bottom-color: dodgerblue;
+    border-bottom-color: green;
 }
 
 .toggle_menu {
@@ -71,6 +71,19 @@ main {
     min-height: 82vh;
     background-color: white;
     padding: 10px;
+    margin: auto;
+}
+
+#banner {
+    border: solid rgb(241, 241, 241) 1px;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+#banner > img {
+    display: block;
+    margin: auto;
+    width: 90vw;
 }
 
 footer {
