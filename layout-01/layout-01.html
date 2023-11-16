@@ -7,169 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="layout-01.css">
     <title>IT Pets</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            text-decoration: none;
-            list-style: none;
-            box-sizing: border-box;
-        }
-
-        body {
-
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            border: 2px solid rgb(230, 232, 236);
-        }
-
-        #logo>img {
-            max-height: 50px;
-            display: none;
-        }
-
-        #logo>span {
-            font-size: 3rem;
-            font-weight: bold;
-        }
-
-        header {
-            width: 100%;
-            left: 0;
-            top: 0;
-            position: fixed;
-            background-color: white;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            border-bottom: solid 1px rgb(230, 232, 236);
-            height: 75px;
-        }
-
-        nav {
-            display: flex;
-            width: 75%;
-            margin-top: auto;
-            margin-bottom: auto;
-        }
-
-        .topMenus {
-            display: flex;
-            margin-left: auto;
-        }
-
-        .topMenus>li {
-            display: inline-block;
-            padding: 4px;
-            margin: 2px;
-            border-radius: 4px;
-            color: white;
-        }
-
-        .topMenus>li>a {
-            display: inline-block;
-            color: #000;
-            padding: 5px 0;
-            margin: 0 0 0 10px;
-            border: 3px solid transparent;
-            font-weight: 400;
-            /* text-transform: uppercase; */
-            transition: 0.2s;
-        }
-
-        .topMenus>li a:hover,
-        .topMenus>li a.active {
-            border-bottom-color: green;
-        }
-
-        main {
-            margin: auto;
-            margin-top: 75px;
-            padding: 10px;
-            width: 100%;
-            /* background-color: whitesmoke; */
-            padding-bottom: 75px;
-        }
-
-        #banner {
-            margin: 10px;
-            /* border: solid rgb(170, 170, 170) 1px; */
-            border-radius: 8px;
-        }
-
-        #banner>img {
-            display: block;
-            margin: auto;
-            width: 100%;
-            /* border: solid rgb(85, 85, 85) 1px; */
-            border-radius: 8px;
-        }
-
-        .toggle_menu {
-            cursor: pointer;
-            display: none;
-        }
-
-        .toggle_menu div {
-            width: 30px;
-            height: 3px;
-            margin: 5px 0;
-            background: #000;
-        }
-
-        footer {
-            position: fixed;
-            width: 100%;
-            left: 0;
-            bottom: 0;
-            background-color: white;
-            border-top: solid 1px rgb(230, 232, 236);
-            padding: 10px;
-        }
-
-        footer>p {
-            text-align: center;
-        }
-
-        @media only screen and (max-width: 720px) {
-
-            nav {
-                all: initial;
-                position: absolute;
-                left: -50%;
-                width: 50%;
-                top: 75px;
-                background: #fff;
-                padding: 10px 0;
-                border: solid 1px rgb(230, 232, 236);
-                min-height: 92vh;
-            }
-
-            .topMenus {
-                all: initial;
-                display: block;
-                /* border: solid 1px black; */
-            }
-
-            .topMenus>li {
-                display: block;
-            }
-
-            .toggle_menu {
-                display: block;
-                margin-top: auto;
-                margin-bottom: auto;
-            }
-
-            #nav_check:checked~nav {
-                transition: 0.3s;
-                left: 0;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -219,7 +59,7 @@
     <main>
         <!-- Block content Begin-->
         <div id="banner">
-            <img src="pets.jpg" alt="">
+            <img src="pets-banner.jpg" alt="">
         </div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, iste dolorum repellendus amet voluptatem
         inventore illum totam fuga, assumenda excepturi quos. Fugiat commodi labore deleniti. Molestias voluptatum in
@@ -489,7 +329,18 @@
         <!-- Block content End-->
     </main>
     <footer>
-        <p>©Copyright 2023 by nobody. All rights reversed.</p>
+        <div>
+            <a href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-discord fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-line fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-weixin fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+        </div>
+        <p>©Copyright 2023 by itPets. All rights reserved.</p>
     </footer>
 </body>
 
