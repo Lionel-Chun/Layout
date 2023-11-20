@@ -8,117 +8,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="styles/layout-01.css">
-    <link rel="stylesheet" href="styles/cards.css">
+    <link rel="stylesheet" href="static/css/layout-01.css">
+    <link rel="stylesheet" href="static/css/cards.css">
     <title>IT Pets</title>
     <style>
-        .btn {
-            background-color: white;
-            border: 1px solid #cccccc;
-            color: #696969;
-            padding: 0.5rem;
-            text-transform: lowercase;
-        }
 
-        .btn--block {
-            display: block;
-            width: 100%;
-        }
-
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .cards__item {
-            display: flex;
-            padding: 1rem;
-        }
-
-        @media (min-width: 40rem) {
-            .cards__item {
-                width: 50%;
-            }
-        }
-
-        @media (min-width: 56rem) {
-            .cards__item {
-                width: 25%;
-            }
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 0.25rem;
-            box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .card:hover .card__image {
-            filter: contrast(100%);
-        }
-
-        .card__content {
-            display: flex;
-            flex: 1 1 auto;
-            flex-direction: column;
-            padding: 1rem;
-        }
-
-        .card__image {
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            border-top-left-radius: 0.25rem;
-            border-top-right-radius: 0.25rem;
-            filter: contrast(70%);
-            overflow: hidden;
-            position: relative;
-            transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
-        }
-
-        .card__image::before {
-            content: "";
-            display: block;
-            /* padding-top: 56.25%; */
-        }
-
-        .card-img {
-            margin-top: 0;
-            width: 100%;
-        }
-
-        .card__title {
-            font-size: 1.25rem;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .card__text {
-            flex: 1 1 auto;
-            text-align: justify;
-            margin-bottom: 1.25rem;
-            margin-top: 1rem;
-        }
     </style>
 </head>
 
 <body>
     <header>
         <div id="logo">
-            <img src="django-logo.png" alt="Django Logo">
+            <img src="static/img/django-logo.png" alt="Django Logo">
             <span>
                 itPets
             </span>
             <!-- ITPets -->
         </div>
-        <input type="checkbox" id="nav_check" hidden>
+        <input type="checkbox" id="navCheck" hidden>
         <nav>
             <lu class="topMenus">
                 <li>
@@ -147,7 +54,7 @@
                 </li>
             </lu>
         </nav>
-        <label for="nav_check" class="toggle_menu">
+        <label for="navCheck" class="toggleMenu">
             <div></div>
             <div></div>
             <div></div>
@@ -156,48 +63,54 @@
     <main>
         <!-- Block content Begin-->
         <div id="banner">
-            <img src="pets-banner.jpg" alt="">
+            <img src="static/img/HomeBanner.jpg" alt="">
         </div>
 
 
-        <ul class="cards">
-            <li class="cards__item">
-                <div class="card">
-                    <div class="card__image card__image--fence"><img class="card-img" src="pets/cat.jpg" alt=""></div>
-                    <div class="card__content">
-                        <div class="card__title">Cat</div>
-                        <p class="card__text">The cat (Felis catus), commonly referred to as the domestic cat or house cat, is the only domesticated species in the family Felidae.</p>
-                        <button class="btn btn--block card__btn">Button</button>
+        <ul class="cardList">
+            <li class="cardItem">
+                <div class="cardItemInner">
+                    <div class="cardImageOuter"><img class="cardImg" src="media/cat.jpg" alt=""></div>
+                    <div class="cardContent">
+                        <div class="cardTitle">Cat</div>
+                        <p class="cardParagraph ">The cat (Felis catus), commonly referred to as the domestic cat or house
+                            cat, is the only domesticated species in the family Felidae.</p>
+                        <button class="cardButton">Button</button>
                     </div>
                 </div>
             </li>
-            <li class="cards__item">
-                <div class="card">
-                    <div class="card__image card__image--river"><img class="card-img" src="pets/dog.jpg" alt=""></div>
-                    <div class="card__content">
-                        <div class="card__title">Dog</div>
-                        <p class="card__text">The dog (Canis familiaris or Canis lupus familiaris) is a domesticated descendant of the wolf. Also called the domestic dog, it is derived from extinct Pleistocene wolves, and the modern wolf is the dog's nearest living relative.</p>
-                        <button class="btn btn--block card__btn">Button</button>
+            <li class="cardItem">
+                <div class="cardItemInner">
+                    <div class="cardImageOuter"><img class="cardImg" src="media/dog.jpg" alt=""></div>
+                    <div class="cardContent">
+                        <div class="cardTitle">Dog</div>
+                        <p class="cardParagraph ">The dog (Canis familiaris or Canis lupus familiaris) is a domesticated
+                            descendant of the wolf. Also called the domestic dog, it is derived from extinct Pleistocene
+                            wolves, and the modern wolf is the dog's nearest living relative.</p>
+                        <button class="cardButton">Button</button>
                     </div>
                 </div>
             </li>
-            <li class="cards__item">
-                <div class="card">
-                    <div class="card__image card__image--record"><img class="card-img" src="pets/parrot.jpg" alt=""></div>
-                    <div class="card__content">
-                        <div class="card__title">Parrot</div>
-                        <p class="card__text">Parrots (Psittaciformes), also known as psittacines, are birds with a strong curved beak, upright stance, and clawed feet.</p>
-                        <button class="btn btn--block card__btn">Button</button>
+            <li class="cardItem">
+                <div class="cardItemInner">
+                    <div class="cardImageOuter"><img class="cardImg" src="media/parrot.jpg" alt=""></div>
+                    <div class="cardContent">
+                        <div class="cardTitle">Parrot</div>
+                        <p class="cardParagraph ">Parrots (Psittaciformes), also known as psittacines, are birds with a
+                            strong curved beak, upright stance, and clawed feet.</p>
+                        <button class="cardButton">Button</button>
                     </div>
                 </div>
             </li>
-            <li class="cards__item">
-                <div class="card">
-                    <div class="card__image card__image--flowers"><img class="card-img" src="pets/rabbit.jpg" alt=""></div>
-                    <div class="card__content">
-                        <div class="card__title">Rabbit</div>
-                        <p class="card__text">Rabbits, also known as bunnies or bunny rabbits, are small mammals in the family Leporidae (which also contains the hares) of the order Lagomorpha (which also contains the pikas).</p>
-                        <button class="btn btn--block card__btn">Button</button>
+            <li class="cardItem">
+                <div class="cardItemInner">
+                    <div class="cardImageOuter"><img class="cardImg" src="media/rabbit.jpg" alt=""></div>
+                    <div class="cardContent">
+                        <div class="cardTitle">Rabbit</div>
+                        <p class="cardParagraph ">Rabbits, also known as bunnies or bunny rabbits, are small mammals in the
+                            family Leporidae (which also contains the hares) of the order Lagomorpha (which also
+                            contains the pikas).</p>
+                        <button class="cardButton">Button</button>
                     </div>
                 </div>
             </li>

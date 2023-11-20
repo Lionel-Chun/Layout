@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/calendar.css">
+    <script src="static/js/calendar.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <img src="static/img/django-logo.png" alt="Django Logo">
+            <span>
+                itPets
+            </span>
+            <!-- ITPets -->
+        </div>
+        <input type="checkbox" id="navCheck" hidden>
+        <nav>
+            <lu class="topMenus">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="">One</a>
+                </li>
+                <li>
+                    <a href="">Two</a>
+                </li>
+                <li>
+                    <a href="calendar.html" class="active">Booking</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+
+            </lu>
+            <lu class="topMenus">
+                <li>
+                    <a href="">Signup</a>
+                </li>
+                <li>
+                    <a href="">Login</a>
+                </li>
+            </lu>
+        </nav>
+        <label for="navCheck" class="toggleMenu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+    </header>
+    <main>
+
+        <table id="calendar">
+            <thead>
+                <tr>
+                    <th id="minusYear">&lt;&lt;</th>
+                    <th id="year" colspan="5"></th>
+                    <th id="addYear">&gt;&gt;</th>
+                </tr>
+                <tr>
+                    <th id="minusMonth">&lt;&lt;</th>
+                    <th id="month" colspan="5"></th>
+                    <th id="addMonth">&gt;&gt;</th>
+                </tr>
+                <tr>
+                    <th id="minusDate"></th>
+                    <th id="date" colspan="5"></th>
+                    <th id="addDate"></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th colspan="5" id="day"></th>
+                    <th></th>
+                </tr>
+                <tr class="weeks">
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+
+            <tbody id="dayOfThisMonth">
+                <tr class="weeks">
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                </tr>
+                <tr class="weeks">
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                </tr>
+                <tr class="weeks">
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                </tr>
+                <tr class="weeks">
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                </tr>
+                <tr class="weeks">
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                </tr>
+                <tr class="weeks">
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                    <td class="dayDataCell"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table id="schedule">
+            <thead>
+                <tr>
+                    <th id="dateOfSchedule" colspan="7"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>9:00 A.M.</th>
+                    <td colspan="6"></td>
+                </tr>
+                <tr>
+                    <th>10:00 A.M.</th>
+                    <td colspan="6"></td>
+                </tr>
+                <tr>
+                    <th>11:00 A.M.</th>
+                    <td colspan="6"></td>
+                </tr>
+                <tr>
+                    <th>12:00 P.M.</th>
+                    <td colspan="6"></td>
+                </tr>
+                <tr>
+                    <th>1:00 P.M.</th>
+                    <td colspan="6">Lunch Time</td>
+                </tr>
+                <tr>
+                    <th>2:00 P.M.</th>
+                    <td colspan="6"></td>
+                </tr>
+                <tr>
+                    <th>3:00 P.M.</th>
+                    <td colspan="6"></td>
+                </tr>
+                <tr>
+                    <th>4:00 P.M.</th>
+                    <td colspan="6"></td>
+                </tr>
+                <tr>
+                    <th>5:00 P.M.</th>
+                    <td colspan="6"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+    <footer>
+        <div>
+            <a href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-discord fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-line fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-weixin fa-lg"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+        </div>
+        <p>©Copyright 2023 by itPets. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

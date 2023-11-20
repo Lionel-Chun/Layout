@@ -1,0 +1,76 @@
+#calendar {
+    margin: 80px auto;
+    width: 436px;
+}
+
+#calendar,
+#calendar th,
+#calendar td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#calendar th,
+#calendar td {
+    height: 18px;
+    width: 60px;
+}
+
+#calendar a {
+    /* color: black; */
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: green;
+}
+
+#dayOfThisMonth {
+    text-align: center;
+    font-weight: bold;
+}
+
+.weeks th:first-child {
+    color: red;
+}
+
+.weeks th:last-child {
+    color: purple;
+}
+
+.weeks td:first-child > a {
+    color: red;
+}
+
+.weeks td:last-child > a {
+    color: purple;
+}
+
+#dateOfSchedule {
+    height: 18px;
+    background-color: whitesmoke;
+}
+
+#schedule {
+    margin: auto;
+    width: 436px;
+    visibility: hidden;
+}
+
+#schedule,
+#schedule tbody th,
+#schedule tbody td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+#schedule tbody tr th {
+    width: 100px;
+    text-align: right;
+}
+
+#schedule tbody tr td {
+    width: 336px;
+    padding-left: 8px;
+}
