@@ -24,6 +24,8 @@ let schedulteTable;
 // Global var for Schedule End
 
 let searchDate;
+
+let queries = [];
  
 function headerCellInit() {
 
@@ -115,29 +117,51 @@ function showScheduleByDate(isodate) {
     document.getElementById('dateOfSchedule').innerHTML = isodate;
 }
 
+function pushUrl(query) {
+    queries.push(query);
+    console.log(queries.join('&'));
+}
+
 document.addEventListener("DOMContentLoaded", event => {
 
 
     headerCellInit();
 
-    let dateObj = new Date();
-    setCalendar(dateObj);
+    const searchParams = new URLSearchParams(window.location.search);
+    searchDate = searchParams.getAll("date");
+
+    // Selection
+    let pet = document.getElementById('pet');
+    let service = document.getElementById('service');
+
+    pet.addEventListener("change", event => {
+        let url = `pet=${event.target.value}`;
+        pushUrl(url);
+        console.log(window.location.search);
+        //window.location = "index.html";
+    });
+
+    service.addEventListener("change", event => {
+        let url = `service=${event.target.value}`;
+        pushUrl(url);
+        console.log(window.location.search);
+        //window.location = "index.html";
+    });
 
     let minusYear = document.getElementById('minusYear');
     let addYear = document.getElementById('addYear');
     let minusMonth = document.getElementById('minusMonth');
     let addMonth = document.getElementById('addMonth');
-
-    const searchParams = new URLSearchParams(window.location.search);
-
-    searchDate = searchParams.getAll("date");
-
+    
+    // Default Date
+    let dateObj = new Date();
+    setCalendar(dateObj);
+    
     // Minus 1 Year Event
     minusYear.addEventListener("click", event => {
         let year = dateObj.getFullYear() - 1;
         dateObj.setFullYear(year);
         setCalendar(dateObj);
-
     });
 
     // Add 1 Year Event

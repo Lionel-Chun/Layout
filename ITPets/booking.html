@@ -12,6 +12,32 @@
     <link rel="stylesheet" href="static/css/main.css">
     <link rel="stylesheet" href="static/css/calendar.css">
     <script src="static/js/calendar.js"></script>
+    <style>
+        #dropDownMenus {
+            margin: 20px auto;
+            padding: 0;
+            width: 436px;
+            font-weight: 500;
+        }
+
+        #petSelection, #serviceSelection {
+            display: inline-block;
+            width: 216px;
+
+        }
+        
+        #petSelection {
+            text-align: left;
+            padding-left: 0;
+            margin-left: 0px;
+        }
+
+        #serviceSelection {
+            text-align: right;
+            padding-right: 0;
+            margin-right: 0px;
+        }
+    </style>
 
 </head>
 
@@ -37,7 +63,7 @@
                     <a href="">Two</a>
                 </li>
                 <li>
-                    <a href="calendar.html" class="active">Booking</a>
+                    <a href="booking.html" class="active">Booking</a>
                 </li>
                 <li>
                     <a href="">About</a>
@@ -61,158 +87,184 @@
     </header>
 
     <main>
-
         <!-- Block content Begin-->
-        <table id="calendar">
-            <thead>
-                <tr>
-                    <th id="minusYear">&lt;&lt;</th>
-                    <th id="year" colspan="5"></th>
-                    <th id="addYear">&gt;&gt;</th>
-                </tr>
-                <tr>
-                    <th id="minusMonth">&lt;&lt;</th>
-                    <th id="month" colspan="5"></th>
-                    <th id="addMonth">&gt;&gt;</th>
-                </tr>
-                <tr>
-                    <th id="minusDate"></th>
-                    <th id="date" colspan="5"></th>
-                    <th id="addDate"></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th colspan="5" id="day"></th>
-                    <th></th>
-                </tr>
-                <tr class="weeks">
-                    <th>Sun</th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                </tr>
-            </thead>
+        <form action="#" method="post">
+            <div id="dropDownMenus">
+                <div id="petSelection">
+                    <label for="pet">Pet: </label>
+                    <select id="pet">
+                        <option selected="true" disabled="disabled">Your Pet</option>
+                        <option value="cat">Cat</option>
+                        <option value="dog">Dog</option>
+                        <option value="parrot">Parrot</option>
+                        <option value="rabbit">Rabbit</option>
+                    </select>
+                </div>
+                <div id="serviceSelection">
+                    <label for="service">Service: </label>
+                    <select id="service">
+                        <option selected="true" disabled="disabled">Our Service</option>
+                        <option value="service1">Service 1</option>
+                        <option value="service2">Service 2</option>
+                        <option value="service3">Service 3</option>
+                        <option value="service4">Service 4</option>
+                    </select>
+                </div>
+            </div>
 
-            <tbody id="dayOfThisMonth">
-                <tr class="weeks">
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                </tr>
-                <tr class="weeks">
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                </tr>
-                <tr class="weeks">
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                </tr>
-                <tr class="weeks">
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                </tr>
-                <tr class="weeks">
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                </tr>
-                <tr class="weeks">
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                    <td class="dayDataCell"></td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-        <table id="schedule">
-            <thead>
-                <tr>
-                    <th id="dateOfSchedule" colspan="7"></th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                <tr>
-                    <th>10 - 11</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>11 - 12</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>12 - 13</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>13 - 14</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>14 - 15</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>15 - 16</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>16 - 17</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>17 - 18</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>18 - 19</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>19 - 20</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>20 - 21</th>
-                    <td colspan="6"></td>
-                </tr>
-                <tr>
-                    <th>21 - 22</th>
-                    <td colspan="6"></td>
-                </tr>
-                
-            </tbody>
-        </table>
+            <table id="calendar">
+                <thead>
+                    <tr>
+                        <th id="minusYear">&lt;&lt;</th>
+                        <th id="year" colspan="5"></th>
+                        <th id="addYear">&gt;&gt;</th>
+                    </tr>
+                    <tr>
+                        <th id="minusMonth">&lt;&lt;</th>
+                        <th id="month" colspan="5"></th>
+                        <th id="addMonth">&gt;&gt;</th>
+                    </tr>
+                    <tr>
+                        <th id="minusDate"></th>
+                        <th id="date" colspan="5"></th>
+                        <th id="addDate"></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th colspan="5" id="day"></th>
+                        <th></th>
+                    </tr>
+                    <tr class="weeks">
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                </thead>
+
+                <tbody id="dayOfThisMonth">
+                    <tr class="weeks">
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                    </tr>
+                    <tr class="weeks">
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                    </tr>
+                    <tr class="weeks">
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                    </tr>
+                    <tr class="weeks">
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                    </tr>
+                    <tr class="weeks">
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                    </tr>
+                    <tr class="weeks">
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                        <td class="dayDataCell"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+
+            <table id="schedule">
+                <thead>
+                    <tr>
+                        <th id="dateOfSchedule" colspan="7"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th>10 - 11</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>11 - 12</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>12 - 13</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>13 - 14</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>14 - 15</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>15 - 16</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>16 - 17</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>17 - 18</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>18 - 19</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>19 - 20</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>20 - 21</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <th>21 - 22</th>
+                        <td colspan="6"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </form>
         <!-- Block content End-->
     </main>
 
