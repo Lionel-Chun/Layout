@@ -16,12 +16,14 @@ let theDayofTheweekIndex;
 let theDayofTheweek;
 let firstDayOfThisMonth;
 let lastDayOfThisMonth;
-let firstDayofTheweekIndex;
+let firstDayOfTheWeekIndex;
 // Global var for Calendar End
 
 // Global var for Schedule Begin
 let schedulteTable;
 // Global var for Schedule End
+
+let searchDate;
  
 function headerCellInit() {
 
@@ -62,9 +64,9 @@ function setCalendar(dateObj) {
     // Last day of this month
     lastDayOfThisMonth = new Date(currentYear, currentMonth, 0).getDate();
 
-    firstDayofTheweekIndex = new Date(currentYear, currentMonthIndex, 1).getDay();
+    firstDayOfTheWeekIndex = new Date(currentYear, currentMonthIndex, 1).getDay();
 
-    console.log(`1st of The week Index ${firstDayofTheweekIndex}`);
+    console.log(`1st of The week Index ${firstDayOfTheWeekIndex}`);
 
     yearHeaderCell.innerText = currentYear;
     monthHeaderCell.innerText = currentMonth;
@@ -78,22 +80,26 @@ function setCalendar(dateObj) {
     for (let i = 0; i < dayDataCell.length; i++) {
 
         dayDataCell[i].style.backgroundColor = "transparent";
-        if (i >= firstDayofTheweekIndex && d <= lastDayOfThisMonth) {
 
+        if (i >= firstDayOfTheWeekIndex && d <= lastDayOfThisMonth) {
 
             dayDataCell[i].innerHTML = null;
 
             let anchor = document.createElement('a');
             let ISODate = `${currentYear}-${currentMonth}-${d}`;
             anchor.dataset.isodate = ISODate;
-            anchor.href = `#${ISODate}`;
-            let textnode = document.createTextNode(d);
+            anchor.href = `?date=${ISODate}`;
             anchor.innerText = d;
             dayDataCell[i].appendChild(anchor);
 
             if (d == currentDate) {
                 dayDataCell[i].style.backgroundColor = "yellow";
             }
+            
+            if (i % 7 == 0) {
+                anchor.style.color = "red";
+            }
+
             d++;
 
         } else {
@@ -119,8 +125,12 @@ document.addEventListener("DOMContentLoaded", event => {
 
     let minusYear = document.getElementById('minusYear');
     let addYear = document.getElementById('addYear');
-    let minusDminusMonthate = document.getElementById('minusMonth');
+    let minusMonth = document.getElementById('minusMonth');
     let addMonth = document.getElementById('addMonth');
+
+    const searchParams = new URLSearchParams(window.location.search);
+
+    searchDate = searchParams.getAll("date");
 
     // Minus 1 Year Event
     minusYear.addEventListener("click", event => {
@@ -152,13 +162,7 @@ document.addEventListener("DOMContentLoaded", event => {
         setCalendar(dateObj);
     });
 
-    // showScheduleByDate(`${currentYear}-${currentMonth}-${currentDate}`);;
-
-    let dayOfThisMonth = document.getElementById('dayOfThisMonth');
-    dayOfThisMonth.addEventListener('click', event => {
-        let isodate = event.target.getAttribute('data-isodate');
-        if (!isNaN(Date.parse(isodate))) {                    
-            showScheduleByDate(isodate);
-        }
-    });
+    if (!isNaN(Date.parse(searchDate))) {                    
+        showScheduleByDate(searchDate);
+    }
 });

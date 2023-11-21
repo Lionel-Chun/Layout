@@ -1,5 +1,5 @@
 #calendar {
-    margin: 40px auto;
+    margin: 20px auto 0px auto;
     width: 436px;
 }
 
@@ -34,18 +34,6 @@
     color: red;
 }
 
-.weeks th:last-child {
-    color: purple;
-}
-
-.weeks td:first-child > a {
-    color: red;
-}
-
-.weeks td:last-child > a {
-    color: purple;
-}
-
 #dateOfSchedule {
     height: 32px;
     background-color: whitesmoke;
@@ -68,11 +56,12 @@
 #schedule tbody tr th {
     height: 32px;
     width: 100px;
-    text-align: right;
+    /* text-align: right; */
+    padding: 0 8px;
 }
 
 #schedule tbody tr td {
     height: 32px;
     width: 336px;
-    padding-left: 8px;
+    padding: 8px;
 }
