@@ -120,8 +120,9 @@ function setCalendar(dateObj) {
 function showScheduleByDate(isodate) {
     schedulteTable = document.getElementById('schedule')
     schedulteTable.style.visibility = "visible";
-    document.getElementById('dateOfSchedule').innerHTML = "";
-    document.getElementById('dateOfSchedule').innerHTML = isodate;
+    // document.getElementById('dateOfSchedule').innerHTML = "";
+    // document.getElementById('dateOfSchedule').innerHTML = isodate;
+    document.getElementById('datePeriod').value = isodate;
 }
 
 document.addEventListener("DOMContentLoaded", event => {
@@ -192,6 +193,8 @@ document.addEventListener("DOMContentLoaded", event => {
     // Default Date
     let dateObj = new Date();
     setCalendar(dateObj);
+
+    // document.getElementById('datePeriod').value = `${currentYear}-${currentMonth}-${currentDate}`;
     
     // Minus 1 Year Event
     minusYear.addEventListener("click", event => {
