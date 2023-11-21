@@ -23,9 +23,10 @@ let firstDayOfTheWeekIndex;
 let schedulteTable;
 // Global var for Schedule End
 
-let searchDate;
-
 let queries = [];
+let datePara = '';
+let petPara = '';
+let servicePara = '';
  
 function headerCellInit() {
 
@@ -90,10 +91,16 @@ function setCalendar(dateObj) {
             let anchor = document.createElement('a');
             let ISODate = `${currentYear}-${currentMonth}-${d}`;
             anchor.dataset.isodate = ISODate;
-            anchor.href = `?date=${ISODate}`;
+
+            let filtered = queries.filter((query) => query != datePara);
+            if (filtered.length > 0) {
+                anchor.href = `?date=${ISODate}&` + filtered.join('&');
+            } else {
+                anchor.href = `?date=${ISODate}`;
+            }
+            
             anchor.innerText = d;
             dayDataCell[i].appendChild(anchor);
-
             if (d == currentDate) {
                 dayDataCell[i].style.backgroundColor = "yellow";
             }
@@ -117,35 +124,64 @@ function showScheduleByDate(isodate) {
     document.getElementById('dateOfSchedule').innerHTML = isodate;
 }
 
-function pushUrl(query) {
-    queries.push(query);
-    console.log(queries.join('&'));
-}
-
 document.addEventListener("DOMContentLoaded", event => {
-
-
+    
     headerCellInit();
 
     const searchParams = new URLSearchParams(window.location.search);
-    searchDate = searchParams.getAll("date");
+    let dateValue = searchParams.getAll("date").toString();
+    if (dateValue != '') {
+        datePara = `date=${dateValue}`
+        queries.push(datePara);
+    }
 
-    // Selection
+    let petValue = searchParams.getAll("pet").toString();
+    if (petValue != '') {
+        petPara = `pet=${petValue}`;
+        queries.push(petPara);
+        let pet = document.getElementById('pet');
+        pet.value = petValue;
+    }
+
+    let serviceValue = searchParams.getAll("service").toString();
+    if (serviceValue != '') {
+        servicePara = `service=${serviceValue}`;
+        queries.push(servicePara);
+        let service = document.getElementById('service');
+        service.value = serviceValue;
+    }
+    //alert(queries.join('&'));
+
     let pet = document.getElementById('pet');
-    let service = document.getElementById('service');
-
     pet.addEventListener("change", event => {
-        let url = `pet=${event.target.value}`;
-        pushUrl(url);
-        console.log(window.location.search);
-        //window.location = "index.html";
+        if (petPara != '') {
+            queries = queries.filter((query) => query != petPara);
+            petPara = `pet=${event.target.value}`;
+            queries.push(petPara);
+        } else {
+            petPara = `pet=${event.target.value}`;
+            queries.push(petPara);
+        }
+        console.log(queries.join('&'));
+        if(queries.length > 0) {
+            window.location = 'booking.html?' + queries.join('&');
+        }
     });
 
+    let service = document.getElementById('service');
     service.addEventListener("change", event => {
-        let url = `service=${event.target.value}`;
-        pushUrl(url);
-        console.log(window.location.search);
-        //window.location = "index.html";
+        if (servicePara != '') {
+            queries = queries.filter((query) => query != servicePara);
+            servicePara = `service=${event.target.value}`;
+            queries.push(servicePara);
+        } else {
+            servicePara = `service=${event.target.value}`;
+            queries.push(servicePara);
+        }
+        console.log(queries.join('&'));
+        if(queries.length > 0) {
+            window.location = 'booking.html?' + queries.join('&')
+        }
     });
 
     let minusYear = document.getElementById('minusYear');
@@ -186,7 +222,7 @@ document.addEventListener("DOMContentLoaded", event => {
         setCalendar(dateObj);
     });
 
-    if (!isNaN(Date.parse(searchDate))) {                    
-        showScheduleByDate(searchDate);
+    if (!isNaN(Date.parse(dateValue))) {  
+        showScheduleByDate(dateValue.toString());
     }
 });
