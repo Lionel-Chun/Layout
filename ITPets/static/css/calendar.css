@@ -39,6 +39,10 @@
     background-color: whitesmoke;
 }
 
+#datePeriod {
+    text-align: center;
+}
+
 #schedule {
     margin: auto;
     width: 436px;
@@ -51,7 +55,6 @@
     border: 1px solid black;
     border-collapse: collapse;
 }
-
 
 #schedule tbody tr th {
     height: 32px;

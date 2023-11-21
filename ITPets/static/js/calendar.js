@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", event => {
     let dateObj = new Date();
     setCalendar(dateObj);
 
-    // document.getElementById('datePeriod').value = `${currentYear}-${currentMonth}-${currentDate}`;
+    /// alert(`${currentYear}-${currentMonth}-${currentDate}`);
     
     // Minus 1 Year Event
     minusYear.addEventListener("click", event => {
