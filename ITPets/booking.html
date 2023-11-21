@@ -20,12 +20,13 @@
             font-weight: 500;
         }
 
-        #petSelection, #serviceSelection {
+        #petSelection,
+        #serviceSelection {
             display: inline-block;
             width: 216px;
 
         }
-        
+
         #petSelection {
             text-align: left;
             padding-left: 0;
@@ -88,11 +89,11 @@
 
     <main>
         <!-- Block content Begin-->
-        <form action="#" method="post">
+        <form action="booking.html" method="get">
             <div id="dropDownMenus">
                 <div id="petSelection">
                     <label for="pet">Pet: </label>
-                    <select id="pet">
+                    <select id="pet" name="pet">
                         <option selected="true" disabled="disabled">Your Pet</option>
                         <option value="cat">Cat</option>
                         <option value="dog">Dog</option>
@@ -102,7 +103,7 @@
                 </div>
                 <div id="serviceSelection">
                     <label for="service">Service: </label>
-                    <select id="service">
+                    <select id="service" name="service">
                         <option selected="true" disabled="disabled">Our Service</option>
                         <option value="service1">Service 1</option>
                         <option value="service2">Service 2</option>
@@ -208,7 +209,7 @@
                 <thead>
                     <tr>
                         <th id="dateOfSchedule" colspan="7">
-                            <input type="date" id="datePeriod"  readonly="readonly" />
+                            <input type="date" id="datePeriod" name="datePeriod" readonly="readonly" />
                         </th>
                     </tr>
                 </thead>
@@ -270,7 +271,7 @@
                     </tr>
                 </tfoot>
             </table>
-            
+
         </form>
         <!-- Block content End-->
     </main>
