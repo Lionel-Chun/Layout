@@ -65,3 +65,12 @@
     width: 336px;
     padding: 8px;
 }
+
+#schedule tfoot {
+    height: 32px;
+}
+
+#schedule tfoot td {
+    text-align: right;
+    padding: 0 8px;
+}
