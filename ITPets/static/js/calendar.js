@@ -27,6 +27,7 @@ let queries = [];
 let datePara = '';
 let petPara = '';
 let servicePara = '';
+let actionPath;
  
 function headerCellInit() {
 
@@ -128,7 +129,7 @@ function showScheduleByDate(isodate) {
 document.addEventListener("DOMContentLoaded", event => {
     
     headerCellInit();
-    actionPath = document.getElementById("myForm").action;
+    actionPath = document.getElementById("booking").action;
 
     const searchParams = new URLSearchParams(window.location.search);
     let dateValue = searchParams.getAll("date").toString();
