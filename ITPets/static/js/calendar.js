@@ -236,7 +236,6 @@ document.addEventListener("DOMContentLoaded", event => {
     let ptb = document.getElementById('ptb');
     ptb.addEventListener('change', event => {
         if (event.target.className == 'periods') {
-            alert(event.target.className);
             submit.removeAttribute('disabled');
         }
     });
