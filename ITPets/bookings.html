@@ -177,72 +177,127 @@
             </table>
             <br>
 
-            <table id="schedule">
-                <thead>
-                    <tr>
-                        <th id="dateOfSchedule" colspan="7">
-                            <input type="text" size="10" id="datePeriod" name="datePeriod" readonly="readonly" />
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>10 - 11</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="10"></td>
-                    </tr>
-                    <tr>
-                        <th>11 - 12</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="11"></td>
-                    </tr>
-                    <tr>
-                        <th>12 - 13</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="12"></td>
-                    </tr>
-                    <tr>
-                        <th>13 - 14</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="13"></td>
-                    </tr>
-                    <tr>
-                        <th>14 - 15</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="14"></td>
-                    </tr>
-                    <tr>
-                        <th>15 - 16</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="15"></td>
-                    </tr>
-                    <tr>
-                        <th>16 - 17</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="16"></td>
-                    </tr>
-                    <tr>
-                        <th>17 - 18</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="17"></td>
-                    </tr>
-                    <tr>
-                        <th>18 - 19</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="18"></td>
-                    </tr>
-                    <tr>
-                        <th>19 - 20</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="19"></td>
-                    </tr>
-                    <tr>
-                        <th>20 - 21</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="20"></td>
-                    </tr>
-                    <tr>
-                        <th>21 - 22</th>
-                        <td colspan="6"><input type="radio" name="timePeriod" value="21"></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="7">
-                            <button type="submit">Submit</button>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+            <div id="periodTable">
+
+                <!-- Period Table Header Begin -->
+                <div id="pth">
+                    <input type="text" size="10" id="datePeriod" name="datePeriod" readonly="readonly" />
+                </div>
+                <!-- Period Table Header End -->
+
+                <!-- Period Table Body Begin -->
+                <div id="ptb">
+                    <!-- Period Table Left Begin -->
+                    <div id="ptl">
+                        <div>
+                            <label for="period-1">10:00 - 10:30</label>
+                            <input type="radio" name="timePeriod" value="10:00" class="periods" id="period-1">
+                        </div>
+                        <div>
+                            <label for="period-2">10:30 - 11:00</label>
+                            <input type="radio" name="timePeriod" value="10:30" class="periods" id="period-2">
+                        </div>
+                        <div>
+                            <label for="period-3">11:00 - 11:30</label>
+                            <input type="radio" name="timePeriod" value="11:00" class="periods" id="period-3">
+                        </div>
+                        <div>
+                            <label for="period-4">11:30 - 12:00</label>
+                            <input type="radio" name="timePeriod" value="11:30" class="periods" id="period-4">
+                        </div>
+                        <div>
+                            <label for="period-5">12:00 - 12:30</label>
+                            <input type="radio" name="timePeriod" value="12:00" class="periods" id="period-5">
+                        </div>
+                        <div>
+                            <label for="period-6">12:30 - 13:00</label>
+                            <input type="radio" name="timePeriod" value="12:30" class="periods" id="period-6">
+                        </div>
+                        <div>
+                            <label for="period-7">13:00 - 13:30</label>
+                            <input type="radio" name="timePeriod" value="13:00" class="periods" id="period-7">
+                        </div>
+                        <div>
+                            <label for="period-8">13:30 - 14:00</label>
+                            <input type="radio" name="timePeriod" value="13:30" class="periods" id="period-8">
+                        </div>
+                        <div>
+                            <label for="period-9">14:00 - 14:30</label>
+                            <input type="radio" name="timePeriod" value="14:00" class="periods" id="period-9">
+                        </div>
+                        <div>
+                            <label for="period-10">14:30 - 15:00</label>
+                            <input type="radio" name="timePeriod" value="14:30" class="periods" id="period-10">
+                        </div>
+                        <div>
+                            <label for="period-11">15:00 - 15:30</label>
+                            <input type="radio" name="timePeriod" value="15:00" class="periods" id="period-11">
+                        </div>
+                        <div>
+                            <label for="period-12">15:30 - 16:00</label>
+                            <input type="radio" name="timePeriod" value="15:30" class="periods" id="period-12">
+                        </div>
+                    </div>
+                    <!-- Period Table Left End -->
+                    
+                    <!-- Period Table Right Begin -->
+                    <div id="ptr">
+                        <div>
+                            <label for="period-1">16:00 - 16:30</label>
+                            <input type="radio" name="timePeriod" value="16:00" class="periods" id="period-1">
+                        </div>
+                        <div>
+                            <label for="period-2">16:30 - 17:00</label>
+                            <input type="radio" name="timePeriod" value="16:30" class="periods" id="period-2">
+                        </div>
+                        <div>
+                            <label for="period-3">17:00 - 17:30</label>
+                            <input type="radio" name="timePeriod" value="17:00" class="periods" id="period-3">
+                        </div>
+                        <div>
+                            <label for="period-4">17:30 - 18:00</label>
+                            <input type="radio" name="timePeriod" value="17:30" class="periods" id="period-4">
+                        </div>
+                        <div>
+                            <label for="period-5">18:00 - 18:30</label>
+                            <input type="radio" name="timePeriod" value="18:00" class="periods" id="period-5">
+                        </div>
+                        <div>
+                            <label for="period-6">18:30 - 19:00</label>
+                            <input type="radio" name="timePeriod" value="18:30" class="periods" id="period-6">
+                        </div>
+                        <div>
+                            <label for="period-7">19:00 - 19:30</label>
+                            <input type="radio" name="timePeriod" value="19:00" class="periods" id="period-7">
+                        </div>
+                        <div>
+                            <label for="period-8">19:30 - 20:00</label>
+                            <input type="radio" name="timePeriod" value="19:30" class="periods" id="period-8">
+                        </div>
+                        <div>
+                            <label for="period-9">20:00 - 20:30</label>
+                            <input type="radio" name="timePeriod" value="20:00" class="periods" id="period-9">
+                        </div>
+                        <div>
+                            <label for="period-10">20:30 - 21:00</label>
+                            <input type="radio" name="timePeriod" value="20:30" class="periods" id="period-10">
+                        </div>
+                        <div>
+                            <label for="period-11">21:00 - 21:30</label>
+                            <input type="radio" name="timePeriod" value="21:00" class="periods" id="period-11">
+                        </div>
+                        <div>
+                            <label for="period-12">21:30 - 22:00</label>
+                            <input type="radio" name="timePeriod" value="21:30" class="periods" id="period-12">
+                        </div>
+                    </div>
+                    <!-- Period Table Right End -->
+                </div>
+                <!-- Period Table Body End -->
+                <div id="ptf">
+                    <button id="s" type="submit">Submit</button>
+                </div>
+            </div>
 
         </form>
         <!-- Block content End-->

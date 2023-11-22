@@ -21,7 +21,8 @@
     text-decoration: none;
 }
 
-#calendar a:link, #calendar a:visited {
+#calendar a:link,
+#calendar a:visited {
     color: green;
 }
 
@@ -49,35 +50,6 @@
     visibility: hidden;
 }
 
-#schedule,
-#schedule tbody th,
-#schedule tbody td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-#schedule tbody tr th {
-    height: 32px;
-    width: 100px;
-    /* text-align: right; */
-    padding: 0 8px;
-}
-
-#schedule tbody tr td {
-    height: 32px;
-    width: 336px;
-    padding: 8px;
-}
-
-#schedule tfoot {
-    height: 32px;
-}
-
-#schedule tfoot td {
-    text-align: right;
-    padding: 0 8px;
-}
-
 #dropDownMenus {
     margin: 20px auto;
     padding: 0;
@@ -102,4 +74,41 @@
     text-align: right;
     padding-right: 0;
     margin-right: 0px;
+}
+
+#periodTable {
+    display: flex;
+    flex-direction: column;
+    width: 436px;
+    margin: auto;
+    border: solid black 1px;
+    padding: 4px;
+    text-align: center;
+}
+
+#pth, #ptf {
+    display: block;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+#ptb {
+    display: flex;
+    flex-flow: row wrap;
+    height: 100%;
+    border-radius: 4px;
+}
+
+#ptb  > * {
+    flex: 1 50%;
+    background-color: white;
+    border-radius: 4px;
+}
+
+#periodTable:hover, #periodTable > * :hover {
+    background-color: rgba(0, 0, 0, 0.075);
+    transition: 0.5ms;
 }

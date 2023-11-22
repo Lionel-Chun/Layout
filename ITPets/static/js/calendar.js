@@ -19,9 +19,7 @@ let lastDayOfThisMonth;
 let firstDayOfTheWeekIndex;
 // Global var for Calendar End
 
-// Global var for Schedule Begin
-let schedulteTable;
-// Global var for Schedule End
+let periodTable;
 
 let queries = [];
 let datePara = '';
@@ -118,13 +116,14 @@ function setCalendar(dateObj) {
     }
 }
 
-function showScheduleByDate(isodate) {
-    schedulteTable = document.getElementById('schedule')
-    schedulteTable.style.visibility = "visible";
-    // document.getElementById('dateOfSchedule').innerHTML = "";
-    // document.getElementById('dateOfSchedule').innerHTML = isodate;
+
+
+function showPeriodTableByDate(isodate) {
+    periodTable = document.getElementById('periodTable')
+    periodTable.style.visibility = "visible";
     document.getElementById('datePeriod').value = isodate;
 }
+
 
 document.addEventListener("DOMContentLoaded", event => {
     
@@ -228,6 +227,17 @@ document.addEventListener("DOMContentLoaded", event => {
     });
 
     if (!isNaN(Date.parse(dateValue))) {  
-        showScheduleByDate(dateValue.toString());
+        showPeriodTableByDate(dateValue.toString());
     }
+
+    let submit = document.querySelector('button[type="submit"]');
+    submit.setAttribute('disabled', 'true');
+
+    let ptb = document.getElementById('ptb');
+    ptb.addEventListener('change', event => {
+        if (event.target.className == 'periods') {
+            alert(event.target.className);
+            submit.removeAttribute('disabled');
+        }
+    });
 });
