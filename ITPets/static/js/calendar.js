@@ -128,6 +128,7 @@ function showScheduleByDate(isodate) {
 document.addEventListener("DOMContentLoaded", event => {
     
     headerCellInit();
+    actionPath = document.getElementById("myForm").action;
 
     const searchParams = new URLSearchParams(window.location.search);
     let dateValue = searchParams.getAll("date").toString();
@@ -165,7 +166,7 @@ document.addEventListener("DOMContentLoaded", event => {
         }
         console.log(queries.join('&'));
         if(queries.length > 0) {
-            window.location = 'booking.html?' + queries.join('&');
+            window.location = `${actionPath}?` + queries.join('&');
         }
     });
 
@@ -181,7 +182,7 @@ document.addEventListener("DOMContentLoaded", event => {
         }
         console.log(queries.join('&'));
         if(queries.length > 0) {
-            window.location = 'booking.html?' + queries.join('&')
+            window.location = `${actionPath}?` + queries.join('&')
         }
     });
 
