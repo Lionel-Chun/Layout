@@ -129,7 +129,7 @@ function showScheduleByDate(isodate) {
 document.addEventListener("DOMContentLoaded", event => {
     
     headerCellInit();
-    actionPath = document.getElementById("booking").action;
+    actionPath = document.getElementById("bookings").action;
 
     const searchParams = new URLSearchParams(window.location.search);
     let dateValue = searchParams.getAll("date").toString();

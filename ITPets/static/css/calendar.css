@@ -77,3 +77,29 @@
     text-align: right;
     padding: 0 8px;
 }
+
+#dropDownMenus {
+    margin: 20px auto;
+    padding: 0;
+    width: 436px;
+    font-weight: 500;
+}
+
+#petSelection,
+#serviceSelection {
+    display: inline-block;
+    width: 216px;
+
+}
+
+#petSelection {
+    text-align: left;
+    padding-left: 0;
+    margin-left: 0px;
+}
+
+#serviceSelection {
+    text-align: right;
+    padding-right: 0;
+    margin-right: 0px;
+}
