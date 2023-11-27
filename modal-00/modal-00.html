@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* Some basic CSS overrides */
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  font-family: "Outfit", sans-serif;
+  color: #2d232e;
+  background-color: #c8c0bd;
+  position: relative;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* End basic CSS override */
+* {
+  scrollbar-width: 0;
+}
+
+*::-webkit-scrollbar {
+  background-color: transparent;
+  width: 12px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background-color: #ddd;
+  border: 4px solid #fff;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  visibility:hidden;
+}
+
+.modal-container {
+  max-height: 90vh;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
+}
+@media (max-width: 600px) {
+  .modal-container {
+    width: 90%;
+  }
+}
+
+.modal-container-header {
+  padding: 16px 32px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-container-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+  font-weight: 700;
+  font-size: 1.125;
+}
+.modal-container-title svg {
+  width: 32px;
+  height: 32px;
+  color: #750550;
+}
+
+.modal-container-body {
+  padding: 24px 32px 51px;
+  overflow-y: auto;
+}
+
+.rtf h1,
+.rtf h2,
+.rtf h3,
+.rtf h4,
+.rtf h5,
+.rtf h6 {
+  font-weight: 700;
+}
+.rtf h1 {
+  font-size: 1.5rem;
+  line-height: 1.125;
+}
+.rtf h2 {
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+.rtf h3 {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.rtf > * + * {
+  margin-top: 1em;
+}
+.rtf > * + :is(h1, h2, h3) {
+  margin-top: 2em;
+}
+.rtf > :is(h1, h2, h3) + * {
+  margin-top: 0.75em;
+}
+.rtf ul,
+.rtf ol {
+  margin-left: 20px;
+  list-style-position: inside;
+}
+.rtf ol {
+  list-style: numeric;
+}
+.rtf ul {
+  list-style: disc;
+}
+
+.modal-container-footer {
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
+  gap: 12px;
+  position: relative;
+}
+.modal-container-footer:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -51px;
+  left: 24px;
+  right: 24px;
+  height: 50px;
+  flex-shrink: 0;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.75), transparent);
+  pointer-events: none;
+}
+
+.button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+.button.is-ghost:hover, .button.is-ghost:focus {
+  background-color: #dfdad7;
+}
+.button.is-primary {
+  background-color: #750550;
+  color: #fff;
+}
+.button.is-primary:hover, .button.is-primary:focus {
+  background-color: #4a0433;
+}
+
+.icon-button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.15s ease;
+}
+.icon-button svg {
+  width: 24px;
+  height: 24px;
+}
+.icon-button:hover, .icon-button:focus {
+  background-color: #dfdad7;
+}
+
+    </style>
+<script>
+  document.addEventListener('DOMContentLoaded', event => {
+    let addPet = document.getElementById('addPet');
+    let modal = document.getElementsByClassName('modal');
+    let close = document.getElementById('close');
+
+    addPet.addEventListener('click', event => {
+      //modal[0].style.display = 'flex';
+      modal[0].style.visibility="visible";
+    });
+    
+    close.addEventListener('click', evnet => {
+      //modal[0].style.display = 'block';
+      modal[0].style.visibility="hidden";
+    });
+  });
+</script>
+</head>
+<body>
+  <button id="addPet">ADD</button>
+  <span>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae cupiditate voluptatum corrupti, unde sunt qui necessitatibus fugiat? Exercitationem, mollitia delectus dicta velit, aliquid repudiandae eos placeat, nulla tempore possimus totam.
+    Quod expedita neque unde iusto soluta vitae ducimus beatae dicta, reprehenderit fugit? Iure illo qui explicabo repellendus sed nostrum. Dolor fugit ipsa repellendus. Inventore labore fuga ut assumenda tenetur vitae!
+    Amet impedit explicabo aliquid, ad facilis ab iste consequatur doloribus est maxime! Molestias et eaque doloremque rerum consequatur dolores sequi nesciunt dolorum eos laudantium nostrum consectetur recusandae, nobis, nam laborum.
+    Esse maxime excepturi consectetur velit sapiente maiores nisi provident fugit molestiae eaque sit, nihil minima vitae aperiam dolores nobis, porro accusantium distinctio amet tempore dolorem! Nisi voluptatibus veritatis sint doloribus!
+    Quaerat cumque earum odio obcaecati doloribus repudiandae ut nulla harum illo placeat molestias error aliquam sint modi explicabo quo ducimus esse minima tenetur, sed autem veritatis! Facere laboriosam officiis culpa.
+    Soluta tempora non, autem cum voluptas harum dignissimos quaerat, expedita illum praesentium numquam consequatur veritatis voluptatum maiores dolor mollitia commodi alias quas nulla at nihil repellendus? Quos autem aliquid in.
+    Hic corporis saepe ab. Minima porro ipsa cupiditate tempora laudantium nam recusandae, dolore nihil magni vitae rem dignissimos culpa tempore, placeat perferendis laborum ipsum hic laboriosam nisi animi quisquam reiciendis?
+    Odio, cumque sint ut tempore minima quas, fugiat cum quod reiciendis tenetur vero placeat consequuntur nobis. Sunt magni vitae, nesciunt error ut molestiae harum dolore hic natus provident doloremque quasi!
+    Eius iste vero earum beatae neque ipsum, blanditiis porro recusandae corporis facilis pariatur tempore est, alias at consequatur reiciendis qui voluptatibus in. Dolor iste facilis quod accusamus ea iusto repellendus?
+    Repellendus, maxime voluptatem. Vel numquam molestiae error eius culpa quidem doloremque obcaecati deleniti, voluptas eaque iusto libero molestias optio vero quae illo recusandae cupiditate, reiciendis soluta inventore. Fugiat, facere culpa.
+    Illum aliquam, iusto vero laudantium ipsam molestiae sint fuga a itaque? Magnam nam quas consequatur iure velit? Sit deleniti, fugiat ipsam rem ab atque, non expedita nemo, inventore ipsa dignissimos!
+    Odit tenetur, doloribus natus aliquid libero nam quos est voluptas possimus odio enim quasi sit id, ullam nihil at laborum quibusdam eos? Nostrum, dolores assumenda repellat esse harum temporibus beatae?
+    Quam ea illum expedita, recusandae porro vel eum mollitia iste voluptates? Incidunt numquam fuga nesciunt natus reprehenderit repudiandae, officia voluptate pariatur corrupti quaerat quam, consectetur recusandae accusantium consequuntur doloremque quis.
+    Autem perferendis explicabo, possimus ratione fuga error aliquam eius, harum asperiores, provident nesciunt voluptates quaerat dicta magni maiores ex sequi iste amet voluptas excepturi consectetur cum itaque iusto. Iste, quae?
+    Veritatis earum veniam, sunt voluptatibus unde accusamus laborum doloribus excepturi autem inventore. Quae mollitia pariatur cum deserunt facere, repellendus reprehenderit, nemo sunt quos corrupti maxime excepturi obcaecati odio provident. Magni.
+    Quas, neque. Quaerat eum neque necessitatibus eligendi sit dolor consequuntur, aliquam accusantium voluptate, dolorem esse repellendus excepturi asperiores non nihil debitis totam quod libero nam nobis pariatur itaque. Impedit, obcaecati?
+    Est, optio atque soluta incidunt dignissimos perspiciatis blanditiis suscipit maxime rerum. Provident voluptates minus nihil illo eligendi, libero animi eveniet. Cumque numquam quia veritatis aperiam consectetur accusamus eveniet nesciunt quidem!
+    Illum nobis temporibus esse ab a explicabo omnis non mollitia accusantium dolorum. Explicabo, harum nisi hic at numquam, rerum cumque nostrum ad ab quis sequi esse? Quas distinctio a nulla.
+    Optio saepe voluptatum, itaque dolores veritatis consequuntur architecto illo eveniet quos nesciunt, iusto sapiente! Non aliquid autem necessitatibus! Aperiam consectetur eos sapiente nulla quibusdam quo perspiciatis placeat cumque, recusandae soluta?
+    Animi dolorem, aliquam qui aut inventore eum est sit deserunt incidunt ratione, cupiditate nesciunt voluptas tempore quas consequatur? Cupiditate inventore quidem in perferendis officia repellendus eos. Animi praesentium molestiae ad?
+    Fugiat, accusamus sequi. Facere fugiat voluptatum cupiditate ex alias. Possimus quae illo dolores, iure harum nisi omnis tempore officiis adipisci beatae repellat excepturi. Tempore vel eaque alias praesentium odit laudantium.
+    Corrupti laudantium, voluptas vel, iste quia suscipit fugit illo asperiores accusamus explicabo dolorum ab voluptatem repellendus dicta totam possimus omnis obcaecati facere tenetur iure accusantium eum ad repellat architecto. Debitis.
+    Vitae aliquid nisi iure unde ad officia tenetur debitis consectetur cumque fuga corrupti laboriosam quo cupiditate dicta veniam culpa quisquam, ipsa earum sed autem minus nulla distinctio! Provident, veniam quisquam?
+    Harum voluptate iste voluptas odio repellat maxime inventore libero eaque, voluptatum, soluta quidem. Repudiandae sit mollitia nam, ab perspiciatis distinctio natus minima excepturi odio totam. Placeat soluta error quam voluptate!
+    Officiis tempore expedita neque deleniti pariatur fugiat ex temporibus! Autem accusamus explicabo culpa, laboriosam praesentium doloremque adipisci possimus aut veritatis amet recusandae officia, sapiente quae? Ab aliquam fugit animi. Eveniet.
+    Possimus magni, repudiandae fugit, corrupti vero libero praesentium aliquid expedita dolore iure voluptas quae fuga nam a aut illum modi unde adipisci alias, tempora quidem? Nemo sunt quod dolorum nihil.
+    Totam vel dolorem, deleniti minima minus aliquam incidunt facere nobis aliquid pariatur, doloribus enim laboriosam voluptatum inventore neque corporis cumque eveniet cupiditate illum repellat illo iusto! Dignissimos voluptatem enim nemo.
+    Ipsa error vel voluptatem fugiat corrupti. Veritatis quos, nemo ipsam minus esse quisquam repellat perferendis eveniet a laboriosam cum, ut porro, est vitae eum aspernatur accusamus aliquam natus rerum. Consequuntur.
+    Dolorem aliquid ipsam a, quam provident, ipsa nobis, temporibus corrupti libero debitis adipisci! Perferendis dolorem itaque provident voluptatum recusandae eaque, accusamus dignissimos laudantium est molestias quo possimus, perspiciatis sapiente cum!
+    Perferendis, distinctio nihil velit maxime necessitatibus ducimus saepe! Vitae atque saepe ad? Non similique, culpa eius, nulla voluptatum eos, explicabo pariatur quos laboriosam esse quam odio hic nihil asperiores nam!
+    Dolorem quos amet a nisi! Expedita, nihil in dolorum repellat nam aliquid necessitatibus corporis, non quibusdam sunt et explicabo inventore tenetur reprehenderit nobis? Vero impedit exercitationem quidem vitae, quaerat qui.
+    Ipsum quas qui eos reprehenderit error quidem libero eligendi molestias asperiores ad. Ducimus dolor accusantium, modi repellendus asperiores distinctio aliquid est rem, suscipit dolore ratione magni a? Ullam, cumque libero!
+    Facilis adipisci ullam veritatis molestiae expedita assumenda omnis tempore iusto cumque voluptas molestias ut fugiat perspiciatis officiis id porro laboriosam dolorum ratione, in labore nostrum! Aut reiciendis quisquam tempora nisi?
+    Tenetur nihil asperiores veniam. Dolorem accusamus aspernatur, at iusto, repudiandae dolor, odit adipisci suscipit dignissimos ratione excepturi necessitatibus amet quisquam tempore praesentium autem voluptates veritatis dicta. Rem cum enim dolor!
+    Harum, qui omnis quas quaerat id tempora recusandae velit explicabo aliquid repellat ipsa! Quibusdam voluptas assumenda nulla necessitatibus cumque. Architecto tempora error nam non debitis quam omnis tenetur voluptatibus inventore!
+    Corrupti enim placeat quos molestiae veritatis debitis, cupiditate nisi dolor earum exercitationem id ducimus at ullam nulla veniam, praesentium, minus officiis dignissimos iste ut quam est aliquam nihil! Sequi, ipsa.
+    Alias delectus facere sint aperiam fugiat mollitia quod, ut distinctio nobis. Nisi voluptatem quia cum, dolore ratione explicabo at numquam odio sunt commodi odit, eligendi dolor amet quae tempore natus.
+    Doloremque aliquam excepturi accusantium alias a! Distinctio architecto culpa ipsam nemo quisquam, ad nesciunt sint commodi soluta repellat, assumenda blanditiis, fugiat labore quae sit. Doloremque velit corrupti praesentium repellat numquam?
+    Velit ipsa eaque perspiciatis modi aperiam dolorum, reprehenderit, similique iure sapiente dicta soluta voluptate? Quis aut veniam autem soluta! Velit sapiente similique voluptates ullam deleniti incidunt id, quod ipsa dolorem!
+    Aspernatur harum asperiores nesciunt quae voluptatem veritatis, reiciendis quia voluptates enim beatae architecto qui molestias laboriosam? Impedit autem provident deleniti ipsam, non inventore cum ut. Cum ipsa laboriosam incidunt exercitationem?
+    In ipsa aliquam rem, quam reprehenderit ad, quod architecto accusamus voluptas, molestiae debitis veniam cum eos rerum sed iste eaque velit nostrum ea tenetur eveniet nam? Voluptate iste eaque dolores?
+    Ipsam sint temporibus, numquam laboriosam eveniet inventore distinctio, officia incidunt earum in impedit accusamus consequuntur harum dolores aperiam repudiandae suscipit! Voluptatem aut necessitatibus totam iure neque dolorum nostrum consectetur explicabo.
+    Dignissimos vel quod obcaecati accusantium iusto alias cumque sit, illo blanditiis architecto illum. Necessitatibus itaque excepturi laudantium deleniti quasi nesciunt temporibus ex nobis iusto, ullam illum nisi nulla qui quos!
+    Magni enim, vitae exercitationem sunt repellendus vero, cum asperiores nihil natus ad officiis amet labore? Est impedit voluptates ut tempora recusandae minus nesciunt aspernatur, quas debitis doloribus. Quis, a porro!
+    Repellendus impedit animi nostrum nisi veniam similique ipsum dolorum blanditiis fugiat odio quae totam sed omnis voluptas enim, consectetur nobis dignissimos, perspiciatis obcaecati ipsa id minima ducimus unde exercitationem! Officiis.
+    Rem aperiam accusamus fugit itaque laboriosam vero, soluta magnam fuga temporibus repudiandae alias non, provident neque cumque unde incidunt consequatur pariatur aut corporis? Vitae nihil aut dicta, architecto accusamus laboriosam!
+    Tempore asperiores repudiandae cum architecto laboriosam molestiae facere similique eveniet explicabo omnis voluptas mollitia delectus, consectetur odit sed sunt dolore, ab distinctio itaque. Facilis eos pariatur ipsa quia amet! Vel!
+    Repellendus enim cumque sunt incidunt, adipisci error temporibus dolorem recusandae saepe! Qui quia quasi nesciunt laboriosam alias autem vero, tempore, corporis tempora dolores sequi non explicabo illum asperiores saepe! Ducimus?
+    Aut, et atque excepturi corporis at a voluptatibus blanditiis totam rem amet, voluptatum est ipsa maiores perspiciatis minima nesciunt natus eius soluta laudantium deserunt sed aliquid aliquam. Eum, ducimus soluta.
+    Quod architecto deserunt molestias dolorum enim? Et facilis numquam aspernatur culpa quia asperiores, sunt rerum, magni dicta exercitationem fugiat iste temporibus praesentium modi quidem nulla magnam aliquam commodi error voluptatibus!
+    Reprehenderit deserunt dolorum non aliquid hic harum quam ipsum est ratione esse rem facere ducimus nesciunt excepturi, possimus architecto recusandae. Modi accusantium ullam veritatis officia sint fugiat in eligendi culpa?
+    Suscipit amet aperiam consectetur vero omnis voluptas, impedit neque dicta! Dolore cumque eum consequatur cupiditate consequuntur ut nam reprehenderit accusamus iure. Asperiores nulla nam officiis, ab quod est voluptas nemo?
+    Veniam laudantium perferendis recusandae debitis ipsum eum quod fuga, qui nesciunt aspernatur? Tempore, natus, error laudantium ut nesciunt exercitationem rerum magni soluta itaque dolor a veritatis vero officiis, deleniti similique!
+    Quam itaque tenetur necessitatibus consectetur inventore suscipit, vel officia ex quod beatae nemo reprehenderit ipsa deleniti fuga voluptas minus sapiente aliquam consequatur quisquam corporis ullam debitis quasi ratione magnam! Atque.
+    Ab mollitia quibusdam quae deleniti autem quidem reiciendis, quas velit, sequi facere officiis ipsum exercitationem, inventore voluptate dicta! Magni labore temporibus earum nobis tenetur nesciunt at, laborum unde in quia?
+    Officiis ab saepe alias dolor illum sint possimus omnis deserunt explicabo fugit, quos debitis dolorem repellendus quisquam dolorum adipisci in error quo doloremque? Repellat sint magni saepe vel commodi nihil.
+    Culpa qui expedita ea, minus quidem consequuntur tenetur quas corrupti voluptate doloribus in deserunt delectus dolor veritatis porro eveniet tempora obcaecati ex ipsa enim aspernatur quasi vel nostrum? Corrupti, ut?
+    Atque voluptate blanditiis fugiat, provident molestias ducimus omnis laborum, sequi soluta repudiandae sit illum et necessitatibus ea modi maxime obcaecati aliquam vero sapiente velit. Aliquid aspernatur corporis facilis deleniti perspiciatis?
+    Quibusdam, tempora nam quod exercitationem doloremque architecto repellendus dolorem odit distinctio eos nesciunt molestiae, voluptatibus minus dolor delectus et accusamus illo numquam corporis, explicabo cum! Cum dolor est quis nulla!
+    Reprehenderit, ex dicta. Aut tenetur, animi quas vel harum eius libero veniam! Reprehenderit maiores, minima quam asperiores obcaecati earum mollitia culpa quia eligendi cum reiciendis sequi cupiditate nesciunt numquam tempore.
+    Sunt, cumque error consectetur odio eius, illo repellat soluta laborum facere ipsam quos eveniet est tenetur maiores! Repellat debitis, error consequatur saepe nihil fugit nisi quaerat itaque perspiciatis provident ab?
+    Enim voluptatum amet est maiores, alias, dolorum omnis reiciendis velit, magni ratione hic cupiditate error aspernatur quasi veritatis iusto tenetur et placeat tempora quo quaerat dolores non? Voluptatum, quaerat quae.
+    Error at vitae nobis dolore id commodi assumenda rerum corporis. Ipsam, hic doloremque? Reiciendis excepturi nobis praesentium recusandae quod, veniam natus magni qui voluptatum harum, iste saepe doloribus sequi quo.
+    Repellat dolore sapiente fugit illum distinctio, ex esse sequi, rerum eaque amet, veritatis illo dignissimos! Eius, totam. Nam omnis explicabo, dolore voluptas aliquid quis iusto aperiam, architecto saepe cupiditate mollitia?
+    Asperiores ex quo corrupti sapiente architecto repellendus, obcaecati repudiandae. Velit sequi iusto minus placeat quod et iste nostrum eius ipsum, commodi voluptatibus est aut quidem, quasi libero alias sit! Incidunt?
+    Dignissimos veniam delectus incidunt quos accusantium repellat animi voluptas quis deleniti doloribus voluptatem maxime sunt fugit, assumenda consequuntur eveniet possimus alias autem omnis quo obcaecati distinctio? Asperiores, eveniet veritatis! Repudiandae.
+    Consequatur, esse! Quas, dicta cumque at dolor reprehenderit molestias ratione doloribus fugit. Ducimus dolorem, illum in assumenda laborum iste exercitationem sint cumque culpa at, possimus error minima, ab hic distinctio.
+    Repellendus, veritatis exercitationem. Atque aspernatur blanditiis, quos pariatur omnis sint? Quae amet neque officiis unde praesentium, consequatur, distinctio officia necessitatibus iste error aliquam excepturi cum repellendus fugiat recusandae maiores sunt!
+    Ea tenetur laudantium, architecto id perferendis ullam placeat ducimus quis nisi nam blanditiis sapiente quam facilis quo sunt quaerat et culpa delectus error omnis voluptatum iusto. Consequatur voluptatibus quas quidem.
+    Commodi, dolore porro sint, obcaecati numquam doloremque soluta excepturi et adipisci hic, consectetur consequuntur beatae natus eligendi non amet enim eos. Explicabo, inventore recusandae ea suscipit commodi ab pariatur quam.
+    Nihil qui autem assumenda voluptates temporibus officia vitae facere quis accusantium. Dicta quidem et eos est voluptas autem quia nobis ea quas repudiandae ad impedit, omnis distinctio perferendis aspernatur eum!
+    Quasi dolore quibusdam animi repudiandae laborum quidem eos ipsam architecto fugit perferendis eius nesciunt reprehenderit beatae culpa voluptatum aut nisi, voluptate voluptas obcaecati dolores quisquam! Minus pariatur repellat nemo error!
+    Ipsa, nesciunt? Quidem corporis cum ex doloremque iste sapiente architecto amet voluptatum eius natus! Possimus soluta enim aut iste ipsa cumque rem id perspiciatis modi quas. Illum quo quis praesentium?
+    Nostrum atque, quas alias corporis quia nemo adipisci esse assumenda impedit tempora explicabo, magnam cumque beatae eaque fugit, error ex expedita enim velit. Perferendis accusamus veritatis cupiditate voluptatem, voluptatibus velit.
+    Doloremque at pariatur tempore accusamus mollitia quas, corrupti eligendi, ipsum libero ad dolorem, harum corporis? Sit voluptate culpa doloremque odit nesciunt. Accusantium at facilis vero rem dignissimos est debitis aspernatur.
+    Consequuntur amet quibusdam maxime molestias nulla inventore voluptas nesciunt modi temporibus rem! Fuga maiores tenetur culpa id eveniet vero sit, quasi unde doloremque impedit dolores obcaecati suscipit! Modi, doloremque soluta?
+    Molestias aperiam eius tenetur officia! Ratione aspernatur eius quaerat atque, iste asperiores earum ut tempore cupiditate sit numquam esse sed quod aliquid. Esse unde tempora voluptatem expedita aliquid quas soluta.
+    Eum enim dignissimos rerum. Magnam quo dolore corporis esse placeat cupiditate hic harum pariatur aspernatur itaque doloremque odit recusandae debitis odio, doloribus, distinctio inventore impedit nemo velit vitae! Tenetur, numquam.
+    Aut aliquam animi suscipit ratione nulla, est, quae quia sint totam veritatis quis quibusdam atque iste? Quisquam veniam nobis iure eligendi et fugit sed magnam nihil est. Ratione, recusandae error?
+    Praesentium aspernatur provident itaque odit rerum iure officia quas, impedit eveniet, tempora dolore magnam, dolores non minima! Ipsam assumenda aspernatur unde aliquam deleniti culpa eius. Distinctio esse iure quia vel!
+    Odit doloribus inventore molestiae placeat vitae cum assumenda dicta fugiat nemo, id itaque ut. Quidem exercitationem tempore, aperiam enim officia ullam delectus amet quisquam sed dolores qui, excepturi, aliquid autem.
+    Ipsum aperiam eos impedit iure natus! Magni nulla nesciunt illum, tempore porro repudiandae sequi temporibus rerum. Natus, qui cupiditate. Reprehenderit, numquam? Repellendus hic voluptatibus id, veritatis molestias tenetur at autem?
+    Nulla corrupti illo magnam deleniti fuga eveniet, perspiciatis dolor esse, quis ut sit dicta libero dolorum at, iure consectetur quae saepe reiciendis cumque? Voluptatibus reprehenderit, unde vero soluta eligendi natus!
+    Laudantium quibusdam dignissimos dicta quaerat, eos quod deserunt ea tenetur reprehenderit praesentium. Nihil perferendis fuga dolores reprehenderit dignissimos dicta pariatur magni fugit rerum possimus nobis doloremque tempora, molestias, architecto est.
+    Nesciunt nobis quidem perferendis quis necessitatibus quasi, minus temporibus similique, optio illum eos incidunt eius dolorem et fugiat vitae. Dolores, eveniet. Odio, temporibus consequuntur quaerat molestias laudantium magni voluptatem eveniet.
+    Ut deserunt, dolore hic officia consequatur numquam voluptate beatae quas necessitatibus natus vitae, eum vero tempore corporis vel quod quo sapiente fugiat quidem voluptatem ad? Fuga quibusdam quisquam nostrum rerum?
+    Quibusdam, odio laudantium! Eveniet hic sunt deleniti voluptatibus dolorem incidunt blanditiis nam facere sapiente dolorum, neque cumque ad, omnis quis temporibus labore vero illum. Quasi facere libero asperiores exercitationem distinctio?
+    Aperiam temporibus exercitationem reprehenderit omnis soluta repudiandae amet quisquam et velit, voluptates error sed culpa explicabo nesciunt quod natus recusandae asperiores dolorem, nemo perferendis facere voluptatibus corrupti? Eaque, iste vitae?
+    Id, eum ut dolorum eveniet minus porro praesentium blanditiis illo voluptate magnam veniam repudiandae quos, ipsa ex error laboriosam quaerat ullam sit odit dolores obcaecati! Possimus id eaque quasi est.
+    Sunt accusamus quo expedita! Similique eius cum vero ab itaque id accusamus assumenda laboriosam tempora reiciendis qui, nisi praesentium adipisci corrupti earum magni debitis ad quis in natus nemo voluptatum.
+    Eveniet odit tempore nemo repellat facere dignissimos similique porro possimus, illum vero non nisi ex ducimus fugiat iste nostrum. Provident quod deleniti numquam neque nihil quia pariatur itaque error consequuntur?
+    Magnam rem repudiandae quia reprehenderit esse a explicabo expedita, molestiae nisi totam dicta cumque dolores aperiam alias voluptatem provident ea vel tenetur laudantium, similique, quas non ipsa voluptatibus! Velit, suscipit!
+    Placeat voluptas harum eaque similique cum possimus facilis explicabo sed recusandae dolores, reiciendis, consequuntur beatae minus eum blanditiis qui tenetur! Beatae numquam voluptas recusandae odio amet aut, similique distinctio autem?
+    Eaque, culpa placeat vitae dolore velit repellendus porro nesciunt amet magni atque similique obcaecati! Voluptate sapiente voluptates atque magnam quae architecto aliquam? Recusandae natus numquam nobis odit quidem cum ipsa?
+    Ut tenetur non aut porro maiores autem earum provident pariatur nesciunt numquam quam, eligendi atque velit ex doloribus accusamus aperiam et tempore. Minus totam provident impedit fuga quod doloremque natus?
+    Quasi, et. Quia, laboriosam fuga quasi tempore ipsum repellat sapiente tempora ullam deleniti dolor! Reiciendis quidem illum animi ullam dicta, commodi, reprehenderit deserunt laborum sequi ipsum nisi fuga officiis enim!
+    Illo quo vitae animi. Nemo, placeat perspiciatis! Natus temporibus id at et ea? Natus, ex eligendi asperiores quidem obcaecati nam, laudantium dolor, assumenda totam rerum illo magni! Exercitationem, nostrum. Placeat.
+    At minima libero quos eaque explicabo odit voluptatibus hic aliquam? Mollitia, esse? Commodi inventore esse, rerum dolorem magnam voluptas architecto dolorum blanditiis necessitatibus illum, sint ex excepturi doloremque reprehenderit! Ratione.
+    Odio rem quaerat explicabo! Corrupti, eum! Unde eos architecto nobis? Consequatur, suscipit officia laborum nostrum minus asperiores, quisquam delectus nisi ad quaerat dolor! Similique voluptates quae corporis impedit placeat eius?
+    Odit adipisci officia perferendis dolorem, possimus atque quas eum obcaecati rem laboriosam voluptatem eveniet nam qui nobis accusamus? Commodi neque distinctio praesentium qui alias dolore at modi officia repellat repudiandae.
+  </span>
+    <div class="modal">
+        <article class="modal-container">
+            <header class="modal-container-header">
+                <h1 class="modal-container-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path fill="currentColor" d="M14 9V4H5v16h6.056c.328.417.724.785 1.18 1.085l1.39.915H3.993A.993.993 0 0 1 3 21.008V2.992C3 2.455 3.449 2 4.002 2h10.995L21 8v1h-7zm-2 2h9v5.949c0 .99-.501 1.916-1.336 2.465L16.5 21.498l-3.164-2.084A2.953 2.953 0 0 1 12 16.95V11zm2 5.949c0 .316.162.614.436.795l2.064 1.36 2.064-1.36a.954.954 0 0 0 .436-.795V13h-5v3.949z" />
+                    </svg>
+                    Terms and Services
+                </h1>
+                <button class="icon-button" id="close">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path fill="currentColor" d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
+                    </svg>
+                </button>
+            </header>
+            <section class="modal-container-body rtf">
+                <h2>Quarum ambarum rerum cum medicinam pollicetur, luxuriae licentiam pollicetur.</h2>
+    
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? Duo Reges: constructio interrete. </p>
+    
+                <h3>Ut proverbia non nulla veriora sint quam vestra dogmata.</h3>
+    
+                <p>Quasi vero, inquit, perpetua oratio rhetorum solum, non etiam philosophorum sit. Tria genera cupiditatum, naturales et necessariae, naturales et non necessariae, nec naturales nec necessariae. Sin aliud quid voles, postea. Consequatur summas voluptates non modo parvo, sed per me nihilo, si potest; </p>
+    
+                <p>Cur igitur easdem res, inquam, Peripateticis dicentibus verbum nullum est, quod non intellegatur? Primum in nostrane potestate est, quid meminerimus? Eam tum adesse, cum dolor omnis absit; Quodsi ipsam honestatem undique pertectam atque absolutam. Aliam vero vim voluptatis esse, aliam nihil dolendi, nisi valde pertinax fueris, concedas necesse est. Nec enim, cum tua causa cui commodes, beneficium illud habendum est, sed faeneratio, nec gratia deberi videtur ei, qui sua causa commodaverit. Universa enim illorum ratione cum tota vestra confligendum puto. Sed residamus, inquit, si placet. Sed vobis voluptatum perceptarum recordatio vitam beatam facit, et quidem corpore perceptarum. Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Ita enim se Athenis collocavit, ut sit paene unus ex Atticis, ut id etiam cognomen videatur habiturus. Atque hoc loco similitudines eas, quibus illi uti solent, dissimillimas proferebas. </p>
+    
+                <h2>An hoc usque quaque, aliter in vita?</h2>
+                <ol>
+                    <li>Etenim nec iustitia nec amicitia esse omnino poterunt, nisi ipsae per se expetuntur.</li>
+                    <li>Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q.</li>
+                    <li>Certe nihil nisi quod possit ipsum propter se iure laudari.</li>
+                    <li>Itaque e contrario moderati aequabilesque habitus, affectiones ususque corporis apti esse ad naturam videntur.</li>
+                </ol>
+    
+                <p>Utilitatis causa amicitia est quaesita. Qui autem de summo bono dissentit de tota philosophiae ratione dissentit. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. Hoc positum in Phaedro a Platone probavit Epicurus sensitque in omni disputatione id fieri oportere. Potius inflammat, ut coercendi magis quam dedocendi esse videantur. Roges enim Aristonem, bonane ei videantur haec: vacuitas doloris, divitiae, valitudo; Totum autem id externum est, et quod externum, id in casu est. Non autem hoc: igitur ne illud quidem. Simul atque natum animal est, gaudet voluptate et eam appetit ut bonum, aspernatur dolorem ut malum. Quamquam tu hanc copiosiorem etiam soles dicere. Quid enim necesse est, tamquam meretricem in matronarum coetum, sic voluptatem in virtutum concilium adducere? Hoc positum in Phaedro a Platone probavit Epicurus sensitque in omni disputatione id fieri oportere. Videsne quam sit magna dissensio? </p>
+    
+                <h3>Claudii libidini, qui tum erat summo ne imperio, dederetur.</h3>
+    
+                <p>Eorum enim est haec querela, qui sibi cari sunt seseque diligunt. Cum audissem Antiochum, Brute, ut solebam, cum M. An obliviscimur, quantopere in audiendo in legendoque moveamur, cum pie, cum amice, cum magno animo aliquid factum cognoscimus? Qui igitur convenit ab alia voluptate dicere naturam proficisci, in alia summum bonum ponere? Magni enim aestimabat pecuniam non modo non contra leges, sed etiam legibus partam. Haec mirabilia videri intellego, sed cum certe superiora firma ac vera sint, his autem ea consentanea et consequentia, ne de horum quidem est veritate dubitandum. At, illa, ut vobis placet, partem quandam tuetur, reliquam deserit. Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sed est forma eius disciplinae, sicut fere ceterarum, triplex: una pars est naturae, disserendi altera, vivendi tertia. Nemo enim est, qui aliter dixerit quin omnium naturarum simile esset id, ad quod omnia referrentur, quod est ultimum rerum appetendarum. Quid est, quod ab ea absolvi et perfici debeat? Quod cum accidisset ut alter alterum necopinato videremus, surrexit statim. Tantum dico, magis fuisse vestrum agere Epicuri diem natalem, quam illius testamento cavere ut ageretur. Quod iam a me expectare noli. Quod totum contra est. Semper enim ita adsumit aliquid, ut ea, quae prima dederit, non deserat. </p>
+    
+                <h2>Sed nimis multa.</h2>
+    
+                <p>Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Negat enim summo bono afferre incrementum diem. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Deinde prima illa, quae in congressu solemus: Quid tu, inquit, huc? Minime vero probatur huic disciplinae, de qua loquor, aut iustitiam aut amicitiam propter utilitates adscisci aut probari. Nulla profecto est, quin suam vim retineat a primo ad extremum. Sed ad illum redeo. Quem quidem vos, cum improbis poenam proponitis, inpetibilem facitis, cum sapientem semper boni plus habere vultis, tolerabilem. Huic ego, si negaret quicquam interesse ad beate vivendum quali uteretur victu, concederem, laudarem etiam; Non igitur de improbo, sed de callido improbo quaerimus, qualis Q. His singulis copiose responderi solet, sed quae perspicua sunt longa esse non debent. Quae cum ita sint, effectum est nihil esse malum, quod turpe non sit. </p>
+    
+            </section>
+            <footer class="modal-container-footer">
+                <button class="button is-ghost">Decline</button>
+                <button class="button is-primary">Accept</button>
+            </footer>
+        </article>
+    </div>
+</body>
+</html>

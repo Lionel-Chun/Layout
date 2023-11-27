@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+  .avatar-preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+  }
+
+  .preview-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      cursor: pointer;
+  }
+
+  .hidden-input {
+      display: none;
+  }
+
+  #id_name, #id_type, #id_sex {
+    display: inline-block;
+    min-width: 100px;
+    font-weight: 500;
+  }
+
+  #id_description {
+    display:block;
+  }
+</style>
+<script>
+  function previewImage(event) {
+      var reader = new FileReader();
+      reader.onload = function(){
+          var output = document.getElementById('preview-image');
+          output.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+  }
+
+  document.getElementById('id_photo').addEventListener('change', function(event) {
+      previewImage(event);
+  });
+</script>
+{% endblock head %}
+
+{% block content %}
+
+<button>Add Pet</button>
+
+<!-- Search Pets End -->
+<div id="searchBlock">
+  <form action="{% url 'petprofile' %}" method="GET">
+    <input type="text" id="pet-name" name="name" placeholder="Pet Name" size="16" value="{{ values.name }}">
+    <select name="type">
+      <option selected="true" value="">Types (all)</option>
+      {% for value in animals %}
+        <option value="{{ value }}" {% if value == values.type %} selected {% endif %}>{{ value }}</option>
+      {% endfor %}
+    </select>
+    <select name="sex">
+      <option selected="true" value="">Sexes (all)</option>
+      <option value="Male" {% if values.sex == "Male" %} selected {% endif %}>Male</option>
+      <option value="Female" {% if values.sex == "Female" %} selected {% endif %}>Female</option>
+    </select>
+    <br>
+        {{ filter_form.dob_year }}
+        {{ filter_form.dob_month }}
+        {{ filter_form.dob_day }}
+        <input type="text" id="pet-description" name="description" placeholder="Keywords" value="{{values.description }}">
+        <input type="checkbox" id="is-active" name="is_active" {% if filter_form.is_active.value %} checked {% endif %}>
+        <label for="is-active">Active? </label><button type="submit">Search Pets</button>
+  </form>
+</div>
+<!-- Search Pets End -->
+
+<!--Adding Pet Begin -->
+<div id="addPet">
+  <form method="POST" enctype="multipart/form-data" action="{% url 'petprofile' %}">
+  {% csrf_token %}
+    <p>
+      <th colspan="2">Add Pet</th>
+    </p>
+    <p>
+      {% if pet.photo %}
+      <label for="id_photo" class="avatar-label">
+          <img id="preview-image" src="{{ reg_form.photo }}" alt="Avatar" class="rounded-circle preview-image">
+          <input id="id_photo" type="file" name="photo" accept="image/*" class="hidden-input">
+      </label>
+      {% else %}
+      <label for="id_photo" class="avatar-label">
+        <img id="preview-image" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Favatars-9%2F145%2FAvatar_Dog-512.png&f=1&nofb=1&ipt=71cba1daa6d7785f6afda0f76f5350f881a5369f0053fd31f8b1cb564d86ea44&ipo=images" alt="Avatar" class="rounded-circle preview-image">
+        <input id="id_photo" type="file" name="photo" accept="image/*" class="hidden-input">
+      </label>
+      {% endif %}
+    </p>
+    {{ reg_form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+<!--Adding Pets End -->
+
+<!-- Pet List Begin-->
+<section id="pets" class="py-4">
+    <div class="container">
+      <div class="row">
+      {% if pets %}
+
+        {% for pet in pets %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <div id="avatar-preview" class="avatar-preview">
+              <img class="card-img-top rounded-circle preview-image" {% if pet.photo %} src="{{pet.photo.url}}" {% else %} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Favatars-9%2F145%2FAvatar_Dog-512.png&f=1&nofb=1&ipt=71cba1daa6d7785f6afda0f76f5350f881a5369f0053fd31f8b1cb564d86ea44&ipo=images" {% endif %} alt="Avatar"> 
+            </div>
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white">Name: {{pet.name}}</span>
+              </h2>
+            </div>
+            <div class="card-body">
+              <div class="listing-heading text-center">
+                <h4 class="text-primary">{{pet.type}}</h4>
+                <p>
+                  <i class="fas fa-map-marker text-secondary"></i>Sex: {{pet.sex}}</p>
+              </div>
+              <hr>
+              <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-th-large"></i> Day of Birth: {{pet.dob}}</div>
+              </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-bed"></i> Description: {{pet.description}}</div>
+              </div>
+              <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-12">
+                  <i class="fas fa-user"></i> Active? {{pet.is_active}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+      {% else %}
+        <div class="col-md-12">
+          <p>You haven't registered a pet. Start your registration here!</p>
+        </div>
+      {% endif %}
+      </div>
+    </div>
+</section>
+<!-- Pet List End -->
+
+{% endblock content %}
