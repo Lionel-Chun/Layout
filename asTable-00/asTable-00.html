@@ -45,10 +45,21 @@
       display: inline-block;
       width: 80px;
       text-align: center;
-      background-color: green;
       border-radius: 10px;
       padding: 2px;
       color: white;
+    }
+
+    .booked {
+      background-color: green;
+    }
+
+    .cancelled {
+      background-color: orangered;
+    }
+
+    .finished {
+      background-color: orange;
     }
 
     @media only screen and (max-width: 960px) {
@@ -140,7 +151,7 @@
       </div>
       <div class="dataCell">
         <div class="cellHeader">Status</div>
-        <div class="cellData"><a class="status" href="#">Booked</a></div>
+        <div class="cellData"><a class="status booked" href="#">Booked</a></div>
       </div>
     </div>
     <div class="dataRow">
@@ -162,7 +173,7 @@
       </div>
       <div class="dataCell">
         <div class="cellHeader">Status</div>
-        <div class="cellData"><a class="status" href="#">Booked</a></div>
+        <div class="cellData"><a class="status cancelled" href="#">Cancelled</a></div>
       </div>
     </div>
     <div class="dataRow">
@@ -184,7 +195,7 @@
       </div>
       <div class="dataCell">
         <div class="cellHeader">Status</div>
-        <div class="cellData"><a class="status" href="#">Booked</a></div>
+        <div class="cellData"><a class="status finished" href="#">Finished</a></div>
       </div>
     </div>
     <div class="dataRow">
@@ -206,7 +217,7 @@
       </div>
       <div class="dataCell">
         <div class="cellHeader">Status</div>
-        <div class="cellData"><a class="status" href="#">Booked</a></div>
+        <div class="cellData"><a class="status cancelled" href="#">Cancelled</a></div>
       </div>
     </div>
     <div class="dataRow">
@@ -228,7 +239,7 @@
       </div>
       <div class="dataCell">
         <div class="cellHeader">Status</div>
-        <div class="cellData"><a class="status" href="#">Booked</a></div>
+        <div class="cellData"><a class="status booked" href="#">Booked</a></div>
       </div>
     </div>
   </div>
