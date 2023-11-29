@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Fake Table Begin */
+    .fakeTable {
+      display: table;
+      width: 100%;
+      border: 1px solid rgb(242, 242, 242);
+      border-collapse: collapse;
+    }
+
+    .headerRow,
+    .dataRow {
+      display: table-row;
+      border: 1px solid lightgrey;
+    }
+
+    .dataRow:nth-of-type(even) {
+      background-color: rgb(242, 242, 242);
+    }
+
+    .headerCell,
+    .dataCell {
+      display: table-cell;
+      border: 1px solid rgb(242, 242, 242);
+      padding: 4px;
+    }
+
+    .headerCell {
+      font-weight: bold;
+    }
+
+    .cellHeader {
+      display: none;
+      border: 1px solid rgb(242, 242, 242);
+    }
+
+    .status {
+      text-decoration: none;
+      display: inline-block;
+      width: 80px;
+      text-align: center;
+      background-color: green;
+      border-radius: 10px;
+      padding: 2px;
+      color: white;
+    }
+
+    @media only screen and (max-width: 960px) {
+      .fakeTable {
+        display: block;
+        padding: 0px;
+        border: initial;
+      }
+
+      .headerRow {
+        display: none;
+      }
+
+      .dataRow:nth-of-type(even) {
+        background-color: initial;
+      }
+
+      .dataRow .cellHeader {
+        background-color: initial;
+        border: 1px solid lightgrey;
+      }
+
+      .dataRow .cellData {
+        border: 1px solid lightgrey;
+      }
+
+      .dataRow {
+        display: table;
+        margin: auto;
+        width: 100%;
+        background-color: rgb(242, 242, 242);
+      }
+
+      .dataRow:nth-of-type(1n-1) {
+        margin-top: 8px;
+      }
+
+      .dataRow:nth-of-type(2) {
+        margin-top: 0px;
+      }
+
+      .dataCell {
+        display: table-row;
+      }
+
+      .cellHeader {
+        display: table-cell;
+        min-width: 120px;
+        font-weight: bold;
+        padding: 4px;
+      }
+
+      .cellData {
+        display: table-cell;
+        min-width: 120px;
+        padding: 4px;
+      }
+    }
+
+    /* Fake Table End */
+  </style>
+</head>
+
+<body>
+  <div class="fakeTable">
+    <div class="headerRow">
+      <div class="headerCell">Pet Name</div>
+      <div class="headerCell">Type</div>
+      <div class="headerCell">Booking</div>
+      <div class="headerCell">Schedule</div>
+      <div class="headerCell">Status</div>
+    </div>
+    <div class="dataRow">
+      <div class="dataCell">
+        <div class="cellHeader">Pet Name</div>
+        <div class="cellData">Pet 1</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Type</div>
+        <div class="cellData">Lionel</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Booking</div>
+        <div class="cellData">Glooming</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Schedule</div>
+        <div class="cellData">2023/12/1 11:00-11:30</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Status</div>
+        <div class="cellData"><a class="status" href="#">Booked</a></div>
+      </div>
+    </div>
+    <div class="dataRow">
+      <div class="dataCell">
+        <div class="cellHeader">Pet Name</div>
+        <div class="cellData">Pet 2</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Type</div>
+        <div class="cellData">Lionel</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Booking</div>
+        <div class="cellData">Glooming</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Schedule</div>
+        <div class="cellData">2023/12/1 11:00-11:30</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Status</div>
+        <div class="cellData"><a class="status" href="#">Booked</a></div>
+      </div>
+    </div>
+    <div class="dataRow">
+      <div class="dataCell">
+        <div class="cellHeader">Pet Name</div>
+        <div class="cellData">Pet 3</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Type</div>
+        <div class="cellData">Lionel</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Booking</div>
+        <div class="cellData">Glooming</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Schedule</div>
+        <div class="cellData">2023/12/1 11:00-11:30</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Status</div>
+        <div class="cellData"><a class="status" href="#">Booked</a></div>
+      </div>
+    </div>
+    <div class="dataRow">
+      <div class="dataCell">
+        <div class="cellHeader">Pet Name</div>
+        <div class="cellData">Pet 4</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Type</div>
+        <div class="cellData">Lionel</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Booking</div>
+        <div class="cellData">Glooming</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Schedule</div>
+        <div class="cellData">2023/12/1 11:00-11:30</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Status</div>
+        <div class="cellData"><a class="status" href="#">Booked</a></div>
+      </div>
+    </div>
+    <div class="dataRow">
+      <div class="dataCell">
+        <div class="cellHeader">Pet Name</div>
+        <div class="cellData">Pet 5</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Type</div>
+        <div class="cellData">Lionel</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Booking</div>
+        <div class="cellData">Glooming</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Schedule</div>
+        <div class="cellData">2023/12/1 11:00-11:30</div>
+      </div>
+      <div class="dataCell">
+        <div class="cellHeader">Status</div>
+        <div class="cellData"><a class="status" href="#">Booked</a></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

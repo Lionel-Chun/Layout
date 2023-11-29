@@ -104,7 +104,7 @@
     .modal-container-title svg {
       width: 32px;
       height: 32px;
-      color: #750550;
+      color: rgba(0, 128, 0, 0.5);
     }
 
     .modal-container-body {
@@ -201,13 +201,13 @@
     }
 
     .button.is-primary {
-      background-color: #750550;
+      background-color: rgba(0, 128, 0, 0.5);
       color: #fff;
     }
 
     .button.is-primary:hover,
     .button.is-primary:focus {
-      background-color: #4a0433;
+      background-color: rgba(0, 128, 0, 0.75);
     }
 
     .icon-button {
@@ -240,7 +240,8 @@
       let addPet = document.getElementById('addPet');
       let modal = document.getElementsByClassName('modal');
       let close = document.getElementById('close');
-      let decline = document.getElementById('decline');
+      let cancel = document.getElementById('cancel');
+      let confirm = document.getElementById('confirm');
 
       addPet.addEventListener('click', event => {
         modal[0].style.display = 'flex';
@@ -248,13 +249,17 @@
       });
 
       close.addEventListener('click', evnet => {
+        modal[0].style.display = "none";
+      });
+
+      cancel.addEventListener('click', evnet => {
         modal[0].style.display = 'none';
         // modal[0].style.visibility = "hidden";
       });
 
-      decline.addEventListener('click', event => {
+      confirm.addEventListener('click', event => {
         modal[0].style.display = 'none';
-      })
+      });
     });
   </script>
 </head>
@@ -364,8 +369,8 @@
 
       </section>
       <footer class="modal-container-footer">
-        <button class="button is-ghost" id="decline">Decline</button>
-        <button class="button is-primary" id="Accept">Accept</button>
+        <button class="button is-ghost" id="cancel">Decline</button>
+        <button class="button is-primary" id="confirm">Accept</button>
       </footer>
     </article>
   </div>
