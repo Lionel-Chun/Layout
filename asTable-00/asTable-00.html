@@ -6,6 +6,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    #welcome {
+      margin: auto;
+    }
+
+    /* Grid Begin */
+    #gridBox {
+      display: grid;
+      grid-template-columns: 3fr 4fr 2.5fr 2.5fr;
+      gap: 1px;
+      background-color: whitesmoke;
+    }
+
+    #gridbox>div {
+      z-index: 2;
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 30px;
+    }
+
+    #item1 {
+      background-color: rgba(255, 255, 255, 0.952);
+    }
+
+    #item1>img {
+      margin: auto;
+      width: 82.42%;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      /* defining the aspect ratio of the image */
+      object-fit: cover;
+      /* making sure the image isn't distorted */
+    }
+
+    #item2 {
+      background-color: rgba(255, 255, 255, 0.952);
+    }
+
+    #item2>table {
+      margin-top: 12%;
+      margin-left: 10px;
+      height: 60%;
+      width: 80%;
+      margin-bottom: 0;
+      padding: 0%;
+
+    }
+
+    #contactInfo {
+      text-align: left;
+      margin: auto;
+    }
+
+    #contactInfo tr {
+      margin: 0;
+      padding: 0;
+    }
+
+    #contactInfo th,
+    #contactInfo td {
+      margin: 0;
+      padding: 0 10px;
+    }
+
+    #item3 {
+
+      background-color: aliceblue;
+    }
+
+    #item3>div {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: #abcd62;
+      border-radius: 4px;
+    }
+
+    #item3>#cube1>div {
+      display: block;
+      text-align: center;
+    }
+
+    #cube1a {
+      padding-top: 5%;
+      height: 10%;
+      padding-bottom: 5%;
+    }
+
+    #cube1b {
+      padding-top: 10%;
+      height: 40%;
+      padding-bottom: 10%;
+      font-size: 7vw;
+    }
+
+    #cube1c {
+      padding-top: 5%;
+      height: 10%;
+      padding-bottom: 5%;
+    }
+
+    #item4 {
+      background-color: aliceblue;
+    }
+
+    #item4>div {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: #407fbe;
+      border-radius: 4px;
+    }
+
+    #item4>#cube2>div {
+      display: block;
+      text-align: center;
+    }
+
+    #cube2a {
+      padding-top: 5%;
+      height: 10%;
+      padding-bottom: 5%;
+    }
+
+    #cube2b {
+      padding-top: 10%;
+      height: 40%;
+      padding-bottom: 10%;
+      font-size: 7vw;
+    }
+
+    #cube2c {
+      padding-top: 5%;
+      height: 10%;
+      padding-bottom: 5%;
+    }
+
+    @media only screen and (max-width: 960px) {
+      #gridBox {
+        display: grid;
+        grid-template-columns: 3fr 3fr;
+      }
+
+      #item1>img {
+        margin: auto;
+        width: 100%;
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
+        /* defining the aspect ratio of the image */
+        object-fit: cover;
+        /* making sure the image isn't distorted */
+      }
+
+      #item2>table {
+        margin-top: 18%;
+        margin-left: initial;
+        width: 100%;
+      }
+
+      #cube1b,
+      #cube2b {
+        font-size: 16vw;
+      }
+    }
+
+    /* Grid End */
+
     /* Fake Table Begin */
     .fakeTable {
       display: table;
@@ -31,6 +196,17 @@
       padding: 4px;
     }
 
+    #hc1,
+    #hc2,
+    #hc3 {
+      width: 19.444%;
+    }
+
+    #hc4,
+    #hc5 {
+      width: 20.833%;
+    }
+
     .headerCell {
       font-weight: bold;
     }
@@ -43,7 +219,7 @@
     .status {
       text-decoration: none;
       display: inline-block;
-      width: 80px;
+      width: 100px;
       text-align: center;
       border-radius: 10px;
       padding: 2px;
@@ -80,6 +256,7 @@
       .dataRow .cellHeader {
         background-color: initial;
         border: 1px solid lightgrey;
+        width: 50%;
       }
 
       .dataRow .cellData {
@@ -124,13 +301,55 @@
 </head>
 
 <body>
+
+  <h2 id="welcome">Welcome Ahri</h2>
+  <div id="gridBox">
+    <div id="item1">
+      <img src="http://127.0.0.1:8000/media/photos/2023/11/21/th-4106723644_5bf08uu.jpeg" alt="">
+    </div>
+    <div id="item2">
+      <table id="contactInfo">
+        <tr>
+          <th>Full name:</th>
+          <td>Ahri Sama</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>ahri@gmail.com</td>
+        </tr>
+        <tr>
+          <th>Address:</th>
+          <td>Ionia</td>
+        </tr>
+        <tr>
+          <th>Phone:</th>
+          <td>+85223160323</td>
+        </tr>
+      </table>
+    </div>
+    <div id="item3">
+      <div id="cube1">
+        <div id="cube1a">Pet Registered</div>
+        <div id="cube1b">30</div>
+        <div id="cube1c">Pet Profile</div>
+      </div>
+    </div>
+    <div id="item4">
+      <div id="cube2">
+        <div id="cube2a">Your Booking</div>
+        <div id="cube2b">1</div>
+        <div id="cube2c">Book Service</div>
+      </div>
+    </div>
+  </div>
+
   <div class="fakeTable">
     <div class="headerRow">
-      <div class="headerCell">Pet Name</div>
-      <div class="headerCell">Type</div>
-      <div class="headerCell">Booking</div>
-      <div class="headerCell">Schedule</div>
-      <div class="headerCell">Status</div>
+      <div class="headerCell" id="hc1">Pet Name</div>
+      <div class="headerCell" id="hc2">Type</div>
+      <div class="headerCell" id="hc3">Booking</div>
+      <div class="headerCell" id="hc4">Schedule</div>
+      <div class="headerCell" id="hc5">Status</div>
     </div>
     <div class="dataRow">
       <div class="dataCell">
