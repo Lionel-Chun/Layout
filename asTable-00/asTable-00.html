@@ -13,7 +13,7 @@
     /* Grid Begin */
     #gridBox {
       display: grid;
-      grid-template-columns: 3fr 4fr 2.5fr 2.5fr;
+      grid-template-columns: 2.48fr 4.52fr 2.5fr 2.5fr;
       gap: 1px;
       background-color: whitesmoke;
     }
@@ -32,7 +32,7 @@
 
     #item1>img {
       margin: auto;
-      width: 82.42%;
+      width: 100%;
       border-radius: 50%;
       aspect-ratio: 1 / 1;
       /* defining the aspect ratio of the image */
@@ -44,22 +44,38 @@
       background-color: rgba(255, 255, 255, 0.952);
     }
 
-    #item2>table {
+    #item2>#contactInfo {
       margin-top: 12%;
-      margin-left: 10px;
+      margin-left: 4px;
       height: 60%;
-      width: 80%;
+      width: 90%;
       margin-bottom: 0;
       padding: 0%;
-
     }
 
-    #contactInfo {
+    #item2>#contactInfo {
       text-align: left;
-      margin: auto;
     }
 
-    #contactInfo tr {
+    .asTR {
+      display: block;
+      width: 100%;
+      /* border: 1px solid black; */
+    }
+
+    .asTR div {
+      display: inline-block;
+      padding: 0.8vw;
+    }
+
+    .asTR div:nth-child(1) {
+      /* width: 40%; */
+      width: 100px;
+      font-weight: bold;
+      /* border: 1px solid red; */
+    }
+
+    /* #contactInfo tr {
       margin: 0;
       padding: 0;
     }
@@ -67,8 +83,11 @@
     #contactInfo th,
     #contactInfo td {
       margin: 0;
-      padding: 0 10px;
     }
+
+    #contactInfo th {
+      width: 16vw;
+    } */
 
     #item3 {
 
@@ -91,6 +110,7 @@
       padding-top: 5%;
       height: 10%;
       padding-bottom: 5%;
+      font-size: 20px;
     }
 
     #cube1b {
@@ -126,6 +146,7 @@
       padding-top: 5%;
       height: 10%;
       padding-bottom: 5%;
+      font-size: 20px;
     }
 
     #cube2b {
@@ -139,6 +160,22 @@
       padding-top: 5%;
       height: 10%;
       padding-bottom: 5%;
+    }
+
+    #c1ca, #c2ca {
+      padding: 2px 8px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    #c1ca {
+      background-color: #407fbe;
+      color:#abcd62;
+    }
+
+    #c2ca {
+      background-color: #abcd62;
+      color:#407fbe;
     }
 
     @media only screen and (max-width: 960px) {
@@ -157,9 +194,18 @@
         /* making sure the image isn't distorted */
       }
 
-      #item2>table {
-        margin-top: 18%;
-        margin-left: initial;
+      #item2>#contactInfo {
+        margin-top: 14%;
+        margin-left: 10%;
+        font-size: 3vw;
+        width: 90%;
+      }
+
+      .asTR div {
+        display: block;
+        padding: 2px 0;
+      }
+      .asTR div:nth-child(1) {
         width: 100%;
       }
 
@@ -308,37 +354,37 @@
       <img src="http://127.0.0.1:8000/media/photos/2023/11/21/th-4106723644_5bf08uu.jpeg" alt="">
     </div>
     <div id="item2">
-      <table id="contactInfo">
-        <tr>
-          <th>Full name:</th>
-          <td>Ahri Sama</td>
-        </tr>
-        <tr>
-          <th>Email:</th>
-          <td>ahri@gmail.com</td>
-        </tr>
-        <tr>
-          <th>Address:</th>
-          <td>Ionia</td>
-        </tr>
-        <tr>
-          <th>Phone:</th>
-          <td>+85223160323</td>
-        </tr>
-      </table>
+      <div id="contactInfo">
+        <div class="asTR">
+          <div>Full Name:</div>
+          <div>Ahri Sama</div>
+        </div>
+        <div class="asTR">
+          <div>Email:</div>
+          <div>ahri@gmail.com</div>
+        </div>
+        <div class="asTR">
+          <div>Address:</div>
+          <div>Ionia</div>
+        </div>
+        <div class="asTR">
+          <div>Phone:</div>
+          <div>+85223160323</div>
+        </div>
+      </div>
     </div>
     <div id="item3">
       <div id="cube1">
         <div id="cube1a">Pet Registered</div>
         <div id="cube1b">30</div>
-        <div id="cube1c">Pet Profile</div>
+        <div id="cube1c"><a id="c1ca" href="#">Pet Profile</a></div>
       </div>
     </div>
     <div id="item4">
       <div id="cube2">
         <div id="cube2a">Your Booking</div>
         <div id="cube2b">1</div>
-        <div id="cube2c">Book Service</div>
+        <div id="cube2c"><a id="c2ca" href="#">Book Service</a></div>
       </div>
     </div>
   </div>
